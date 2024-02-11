@@ -7,5 +7,9 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    //
+    // ログイン画面を表示する
+    public function loginForm(){
+
+        return view("auth.login");
+    }
 }

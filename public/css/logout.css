@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* グラデーション（ログイン前ページ） */
+.original-gradient {
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(153deg, rgba(103, 126, 250, 1), rgba(84, 219, 216, 1));
+}
+/* ヘッダー */
+.inner {
+    /* max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px; */
+}
+
+/* ログイン画面 ーーーーーーーーーーーーー*/
+.top-margin_login{
+  padding-top: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* d-blockは、bootstrap */
+
+.center-form{
+  width: 370px;
+}
+
+.input_form{
+ width: 100%;
+ background-color:#EEE ;
+ border-radius: 5px;
+ /* outline: solid 1px #fff; */
+}
+
+.login-font{
+  color:#fff;
+  font-weight: bold;
+}
+
+.top-margin_login_2{
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thank_you_2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/*ーーーーーーユーザー登録画面ーーーーーーーーーーーーーーー  */
+.user-create_button{
+  margin-top: 30px;
+  display: flex;
+  /* flex-direction: column-reverse; */
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ユーザー登録完了画面 ーーーーーーーーーーーーーーー*/
+.flex-person {
+    padding-top: 600px;
+    /* position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%); */
+}
+
+.center-center {
+    /* 上下左右に中央寄せ */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flex_thank_you {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.flex_thank_you_2 {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.thank_you {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+/* ボタン */
+.button {
+    padding: 15px 40px;
+    background: #4169e1;
+    width: 200px;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: #666;
+    opacity: 0.6;
+    color: fff;
+}
+
+.text_thank_you {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.text_thank_you:hover {
+    text-decoration: none;
+    color: #fff;
+}
+/* ーーーーーーーーーーーーーーーーーーーーー */
