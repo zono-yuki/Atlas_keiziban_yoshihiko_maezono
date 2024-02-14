@@ -6,9 +6,9 @@
 
 <div class="original-gradient">
 
-   <div class="top-margin_login mb-2">
-     <p class="thank_you">ユーザー登録</p>
-   </div>
+  <div class="top-margin_login mb-2">
+    <p class="thank_you">ユーザー登録</p>
+  </div>
 
   <form action="{{ route('register') }}" method="post" class="center-form m-auto">
     @csrf

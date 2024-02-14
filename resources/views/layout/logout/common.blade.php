@@ -15,11 +15,11 @@
 <body>
 @yield('header')
 
- <div class="contents">
+<div class="contents">
   <div class="main">
-     @yield('content')
+    @yield('content')
   </div>
- </div>
+</div>
 
 @yield('footer')
 </body>
