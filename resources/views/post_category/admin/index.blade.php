@@ -6,14 +6,16 @@
 <!-- ログインする -->
 
 <!-- ヘッダー -->
-<div class="original-gradient">
-  <div class="">
-    <p class="thank_you">カテゴリー追加画面</p>
-  </div>
-  <div class="text-right mr-4">
-    <a  class= "logout_color" href="{{ route('logout') }}"> <button type="submit" class="mt-4 button">ログアウト</button></a>
-  </div>
-</div>
+<header class="admin_header">
+   <div class="original-gradient">
+     <div class="mb-2">
+       <p class="thank_you">カテゴリー追加画面【管理者専用画面】</p>
+     </div>
+     <div class="text-right mr-4 mb-3">
+       <a  class= "logout_color" href="{{ route('logout') }}"> <button type="submit" class="mt-4 button">ログアウト</button></a>
+     </div>
+   </div>
+</header>
 
 <!-- カテゴリー -->
 <div class="main_index">
@@ -27,6 +29,18 @@
     <div class="">
       <p class="thank_you">新規メインカテゴリー</p>
     </div>
+
+    <!-- バリデーションメッセージ -->
+    @if ($errors->any())
+    <div class="register_error">
+       <ul class="error-ul">
+         @foreach ($errors->all() as $error)
+            <li class="error-message">{{ $error }}</li>
+         @endforeach
+       </ul>
+    </div>
+    @endif
+
     <input type="text" name="main_category" class="text_category">
     <button type="submit" class="button_category_create">登録</button>
   </form>

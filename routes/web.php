@@ -30,11 +30,18 @@ Route::group(['middleware' => ['auth']], function(){
             Route::namespace('Post')->group(function(){
                 //カテゴリー一覧画面
                 Route::get('/post_category', 'PostsController@postCategoryIndex')->name('post_category.index');
+
+                //追加 メインカテゴリー登録完了画面へ
+                Route::get('/main_category_add_ok', 'PostMainCategoriesController@MainCategoryAdded')->name('main_category_add');
+
                 //新規メインカテゴリー登録処理、メインカテゴリー削除処理
                 // Route::resource('post_main_category', 'PostMainCategoriesController', ['only' => ['store', 'destroy']]);
+
                 Route::post('/main_store','PostMainCategoriesController@store')->name('main_store');
+
                 // 新規サブカテゴリー登録処理、サブカテゴリー削除処理
                 Route::resource('post_sub_category', 'PostSubCategoriesController', ['only' => ['store', 'destroy']]);
+
             });
         });
     });
