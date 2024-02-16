@@ -60,3 +60,35 @@
     color: #fff;
     font-weight: bold;
 }
+
+/* カテゴリー追加画面 */
+
+.category_new_form{
+    width: 400px;
+
+}
+
+.text_category{
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #EEE;
+}
+
+.button_category_create {
+    padding: 10px 20px;
+    background: #cc4125;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.button_category_create:hover {
+    background-color: #666;
+    opacity: 0.7;
+    color: #fff;
+    font-weight: bold;
+}

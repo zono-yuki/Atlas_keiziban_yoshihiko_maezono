@@ -31,7 +31,8 @@ Route::group(['middleware' => ['auth']], function(){
                 //カテゴリー一覧画面
                 Route::get('/post_category', 'PostsController@postCategoryIndex')->name('post_category.index');
                 //新規メインカテゴリー登録処理、メインカテゴリー削除処理
-                Route::resource('post_main_category', 'PostMainCategoriesController', ['only' => ['store', 'destroy']]);
+                // Route::resource('post_main_category', 'PostMainCategoriesController', ['only' => ['store', 'destroy']]);
+                Route::post('/main_store','PostMainCategoriesController@store')->name('main_store');
                 // 新規サブカテゴリー登録処理、サブカテゴリー削除処理
                 Route::resource('post_sub_category', 'PostSubCategoriesController', ['only' => ['store', 'destroy']]);
             });

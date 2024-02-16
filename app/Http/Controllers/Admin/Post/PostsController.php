@@ -12,6 +12,4 @@ class PostsController extends Controller
     public function postCategoryIndex(){
         return view("post_category.admin.index");
     }
-
-
 }
