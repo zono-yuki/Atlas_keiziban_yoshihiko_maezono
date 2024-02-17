@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth\Register;
 use App\Models\Users\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterFormRequest;
 
 class RegisterController extends Controller
 {
@@ -15,7 +16,7 @@ class RegisterController extends Controller
     }
 
     // 新規登録処理
-    public function register(Request $request)
+    public function register(RegisterFormRequest $request)
     {
         // dd($request->all());
 

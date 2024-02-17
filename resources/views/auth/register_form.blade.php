@@ -10,6 +10,20 @@
     <p class="thank_you">ユーザー登録</p>
   </div>
 
+      <!-- バリデーションメッセージ -->
+    @if ($errors->any())
+    <div class="register_error">
+       <ul class="error-ul">
+         @foreach ($errors->all() as $error)
+          <div class="text-center">
+            <li class="error-message">{{ $error }}</li>
+          </div>
+
+         @endforeach
+       </ul>
+    </div>
+    @endif
+
   <form action="{{ route('register') }}" method="post" class="center-form m-auto">
     @csrf
     <label for="username" class="d-block login-font">ユーザー名</label>
