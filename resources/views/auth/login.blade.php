@@ -10,11 +10,21 @@
     <p class="thank_you">ログイン</p>
   </div>
 
-  <!-- バリデーション-->
-  @if(session('login_error'))
+    <!-- バリデーションメッセージ （フォームリクエストルール）-->
+    @if ($errors->any())
+    <div class="register_error">
+       <ul class="error-ul">
+         @foreach ($errors->all() as $error)
+            <li class="text-danger error_message">{{ $error }}</li>
+         @endforeach
+       </ul>
+    </div>
+    @endif
+    <!-- バリデーション(メールアドレスかパスワードが違う際)-->
+    @if(session('login_error'))
       <p class="text-danger error_message">{{ session ('login_error') }}
       </p>
-  @endif
+    @endif
 
   <form action="{{ route('login') }}" method="post" class="center-form m-auto mt-2">
   @csrf

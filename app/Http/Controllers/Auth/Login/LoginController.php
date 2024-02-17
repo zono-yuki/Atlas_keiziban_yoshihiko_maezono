@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\LoginFormRequest;
 
 class LoginController extends Controller
 {
@@ -17,7 +17,7 @@ class LoginController extends Controller
 
 
 
-    public function  login(Request $request)
+    public function  login(LoginFormRequest $request)
     {
         $data['email'] = $request->email;
         $data['password'] = $request->password;

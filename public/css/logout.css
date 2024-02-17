@@ -25,6 +25,20 @@ body {
     padding: 0 40px; */
 }
 
+/* バリデーションーーーーーーーーーーーーー*/
+.register_error{
+   padding-left: 0;
+}
+
+.error-ul{
+  padding-left: 0;
+}
+
+.error-message{
+    color: red;
+    font-size: 20px;
+    list-style: none;
+}
 /* ログイン画面 ーーーーーーーーーーーーー*/
 .top-margin_login{
   padding-top: 400px;
