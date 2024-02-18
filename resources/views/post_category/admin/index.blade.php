@@ -43,6 +43,32 @@
 
     <input type="text" name="main_category" class="text_category">
     <button type="submit" class="button_category_create">登録</button>
+
+  </form>
+
+  <!-- サブカテゴリー登録フォーム -->
+  <form action="{{ route('post_sub_category.store') }}" method="post" class="sub_category_new_form">
+    @csrf
+
+    <div class="">
+      <p class="sub_category_thank_you">メインカテゴリー</p>
+    </div>
+    <select name="post_main_category_id" class="select_sub_category">
+      <option value="">-----</option>
+      <!-- メインカテゴリーを繰り返す valueではidをとばす -->
+      @foreach($post_main_categories as $post_main_category)
+        <option value="{{ $post_main_category->id }}">
+          {{ $post_main_category -> main_category }}
+        </option>
+      @endforeach
+    </select>
+
+    <div class="">
+      <p class="sub_category_thank_you">サブカテゴリー</p>
+    </div>
+    <input type="text" name="sub_category" class="text_category">
+    <button type="submit" class="button_category_create">登録</button>
+
   </form>
 
 

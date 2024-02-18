@@ -42,7 +42,7 @@
   margin-top: 50px;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  /* align-items: center; */
 }
 .left_index{
 
@@ -78,6 +78,7 @@
 .text_category{
     display: block;
     width: 100%;
+    height: 40px;
     margin-bottom: 20px;
     background-color: #EEE;
 }
@@ -112,4 +113,26 @@
     color: red;
     font-size: 20px;
     list-style: none;
+}
+
+/* サブカテゴリー登録 */
+.sub_category_new_form{
+    width: 400px;
+    height: auto;
+    margin-top: 100px;
+}
+
+.sub_category_thank_you {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #666;
+    margin-top: 17px;
+}
+
+.select_sub_category{
+    display: block;
+    width: 100%;
+    height: 40px;
+    background-color: #EEE;
+
 }

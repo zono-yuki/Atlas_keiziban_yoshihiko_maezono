@@ -33,13 +33,14 @@ Route::group(['middleware' => ['auth']], function(){
 
                 //追加 メインカテゴリー登録完了画面へ
                 Route::get('/main_category_add_ok', 'PostMainCategoriesController@MainCategoryAdded')->name('main_category_add');
-
+                //追加 サブカテゴリー登録完了画面へ
+                Route::get('/sub_category_add_ok', 'PostSubCategoriesController@SubCategoryAdded')->name('sub_category_add');
                 //新規メインカテゴリー登録処理、メインカテゴリー削除処理
                 // Route::resource('post_main_category', 'PostMainCategoriesController', ['only' => ['store', 'destroy']]);
 
                 Route::post('/main_store','PostMainCategoriesController@store')->name('main_store');
 
-                // 新規サブカテゴリー登録処理、サブカテゴリー削除処理
+                // 新規サブカテゴリー登録処理、サブカテゴリー削除処理  ※ブレードでは、{{ route('post_sub_category.store') }}のようにする
                 Route::resource('post_sub_category', 'PostSubCategoriesController', ['only' => ['store', 'destroy']]);
 
             });
