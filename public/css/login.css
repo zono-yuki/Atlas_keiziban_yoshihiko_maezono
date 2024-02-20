@@ -4,6 +4,11 @@
   background-color: #EEE ;
 }
 
+.inner{
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
 .button {
     padding: 15px 20px;
     background: #4169e1;
@@ -39,16 +44,18 @@
 
 /* 掲示板投稿一覧ページ */
 .main_index{
+  max-width: 100%;
   margin-top: 50px;
   display: flex;
   justify-content: space-around;
   /* align-items: center; */
 }
 .left_index{
+width:60%;
 
 }
 .right_index{
-
+ width: 40%;
 }
 .button_category {
     padding: 10px 20px;
@@ -113,6 +120,7 @@
     color: red;
     font-size: 20px;
     list-style: none;
+    margin-bottom: 0;
 }
 
 /* サブカテゴリー登録 */
@@ -126,7 +134,7 @@
     font-size: 1.7rem;
     font-weight: bold;
     color: #666;
-    margin-top: 17px;
+    /* margin-top: 17px; */
 }
 
 .select_sub_category{
@@ -134,5 +142,43 @@
     width: 100%;
     height: 40px;
     background-color: #EEE;
+    margin-bottom: 30px;
 
+}
+
+.main_category_font{
+    list-style: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sub_category_font{
+
+    list-style:none;
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.button_category_delete {
+    font-size: 13px;
+    padding: 3px 8px;
+    background: #cc4125;
+    width: 70px;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.button_category_delete:hover {
+    background-color: #666;
+    opacity: 0.7;
+    color: #fff;
+    font-weight: bold;
+}
+
+.flex-subcategory_delete{
+    display: flex;
+    justify-content: space-between;
 }

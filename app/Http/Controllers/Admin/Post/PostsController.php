@@ -12,7 +12,7 @@ class PostsController extends Controller
     // カテゴリー追加画面
     public function postCategoryIndex(){
         //viewで表示する時に、PostMainCategoryテーブルの情報を第二引数では渡す。['渡す先での変数名' => 今回渡す値]
-        return view('post_category.admin.index',['post_main_categories' => PostMainCategory::get(),
+        return view('post_category.admin.index',['post_main_categories' => PostMainCategory::postMainCategoryLists(),
         ]);
     }
 }

@@ -24,8 +24,14 @@ class PostMainCategoriesController extends Controller
         return redirect()->route('main_category_add');
     }
 
+    //メインカテゴリー登録完了画面を表示する
     public function MainCategoryAdded()
     {
         return view('post_category.admin.main_category_added');
+    }
+
+    public function destroy($id){
+        PostMainCategory::postMainCategoryDestroy($id);
+        return back();
     }
 }
