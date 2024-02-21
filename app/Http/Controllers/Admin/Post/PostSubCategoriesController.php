@@ -21,6 +21,8 @@ class PostSubCategoriesController extends Controller
         $data['post_main_category_id'] = $request->post_main_category_id;
         $data['sub_category'] = $request->sub_category;
 
+        // dd($data);
+
         $sub_category->fill($data)->save();
 
         // return redirect()->route('post_category.index');

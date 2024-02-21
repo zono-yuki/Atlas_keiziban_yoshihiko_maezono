@@ -24,7 +24,7 @@ class PostMainCategory extends Model
         return self::with('postSubCategories');
     }
 
-    //  メインカテゴリー一覧
+    //  メインカテゴリー一覧取得（処理の時間短縮 & 一覧取得）
     public static function postMainCategoryLists()
     {
         return self::postMainCategoryQuery()->get();
@@ -37,5 +37,11 @@ class PostMainCategory extends Model
         $post_main_category = PostMainCategory::findOrFail($id);
         // レコードの削除
         $post_main_category->delete();
+    }
+
+    //メインカテゴリーに紐づいたサブカテゴリーがあるかどうか判断する
+    public static function postSubCategoryIsExistence($post_main_category)
+    {
+        return $post_main_category->postSubCategories->isEmpty();
     }
 }

@@ -21,4 +21,6 @@ class PostSubCategory extends Model
         // レコードの削除
         $post_sub_category -> delete();
     }
+
+
 }

@@ -9,7 +9,7 @@
 <!-- ヘッダー -->
 <header class="admin_header">
   <div class="original-gradient">
-    <div class="mb-2">
+    <div class="mb-2 ml-5">
       <p class="thank_you">カテゴリー追加画面【管理者専用画面】</p>
     </div>
     <div class="text-right mr-4 mb-3">
@@ -98,13 +98,21 @@
       <ul class="pl-3">
         @foreach($post_main_categories as $post_main_category)
         <li class="main_category_font">
-          {{ $post_main_category -> main_category}}
-
-          <form action="{{ route('post_main_category.destroy',[$post_main_category->id]) }}" method="post" name="post_main_category_delete{{$post_main_category->id}}">
-            @method('DELETE')
-            @csrf
-            <a href="javascript:post_main_category_delete{{$post_main_category->id}}.submit()"><button type="submit" class="button_category_delete">削除</button></a>
-          </form>
+          <div class="flex-main_category">
+            <div>
+              {{ $post_main_category -> main_category}}
+            </div>
+            <div>
+              <form action="{{ route('post_main_category.destroy',[$post_main_category->id]) }}" method="post" name="post_main_category_delete{{$post_main_category->id}}">
+                @method('DELETE')
+                @csrf
+                <!-- メインカテゴリー削除機能 -->
+                @if($post_main_category->postSubCategoryIsExistence($post_main_category))
+                <a href="javascript:post_main_category_delete{{$post_main_category->id}}.submit()"><button type="submit" class="button_category_delete_main">削除</button></a>
+                @endif
+              </form>
+            </div>
+          </div>
 
 
           <ul class="pl-3 mt-2">
