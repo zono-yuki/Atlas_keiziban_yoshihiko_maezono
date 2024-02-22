@@ -22,4 +22,10 @@ class PostsController extends Controller
             'post_main_categories' => PostMainCategory::postMainCategoryLists(),
         ]);
     }
+
+    // 投稿処理
+    public function store()
+    {
+        
+    }
 }
