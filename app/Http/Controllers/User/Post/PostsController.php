@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Posts\PostMainCategory;
+use App\Models\Posts\Post;
+use App\Http\Requests\PostFormRequest;
 
 class PostsController extends Controller
 {
@@ -24,8 +26,24 @@ class PostsController extends Controller
     }
 
     // 投稿処理
-    public function store()
+    public function store(PostFormRequest $request)
     {
-        
+        // dd($request);
+        $user_id = Auth::user() -> id;
+        $post_sub_category_id = $request->input('post_sub_category_id');
+        $title = $request->input('title');
+        $post = $request->input('post');
+
+        //Postテーブルに登録
+        Post::insert([
+            'user_id' => $user_id,
+            'post_sub_category_id' => $post_sub_category_id,
+            'title' => $title,
+            'post' => $post,
+            'event_at' => now(),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+        return redirect()->route('post.index');
     }
 }
