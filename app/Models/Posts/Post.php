@@ -17,4 +17,38 @@ class Post extends Model
         'post',
         'event_at',
     ];
+
+    //Userとのリレーション
+    public function user()
+    {
+        //多対1の（多側からみたリレーション）
+        return $this->belongsTo('App\Models\Users\User', 'user_id');
+    }
+
+    //PostSubCategoryとのリレーション
+    public function postSubCategory()
+    {
+        //多対1の（多側からみたリレーション）
+        return $this->belongsTo('App\Models\Posts\PostSubCategory', 'post_sub_category_id');
+    }
+
+    //クエリ作成（N＋1対策）
+    public static function postQuery()
+    {
+        return self::with([
+            'user',
+            'postSubCategory',
+        ]);
+    }
+
+    //投稿一覧を表示するために投稿データを取得する
+    public static function postLists()
+    {
+        return self::postQuery()->get();
+    }
+
+
+
+
+
 }

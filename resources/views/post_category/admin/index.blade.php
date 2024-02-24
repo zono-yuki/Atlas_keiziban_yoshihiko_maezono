@@ -23,7 +23,7 @@
   <div class="main_index">
 
     <!-- 新規メインカテゴリーなど-->
-    <section class="left_index">
+    <section class="category_left_index">
 
       <!-- 新規メインカテゴリー登録フォーム -->
       <form action="{{ route('main_store') }}" method="post" class="category_new_form">
@@ -90,7 +90,7 @@
     </section>
 
     <!-- カテゴリー一覧 -->
-    <section class="right_index">
+    <section class="category_right_index">
       <div class="">
         <p class="thank_you">カテゴリー一覧</p>
       </div>

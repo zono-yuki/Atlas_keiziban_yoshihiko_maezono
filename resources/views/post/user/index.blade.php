@@ -7,12 +7,12 @@
 
 
 <!-- ヘッダー -->
-<header class="login-header">
+<header class="admin-header">
   <div class="original-gradient">
-    <div class="">
-      <p class="thank_you ml-5">掲示板投稿一覧</p>
+    <div class="mb-2 ml-5">
+      <p class="thank_you">掲示板投稿一覧</p>
     </div>
-    <div class="text-right mr-4">
+    <div class="text-right mr-4 mb-3">
       <a class="logout_color" href="{{ route('logout') }}"> <button type="submit" class="mt-4 button">ログアウト</button></a>
     </div>
   </div>
@@ -22,11 +22,37 @@
 <!-- 投稿とカテゴリー -->
 <div class="inner">
   <div class="main_index">
-    <!-- 投稿-->
+
+    <!-- 投稿(左半分)-->
     <section class="left_index">
-      <p class="thank_you">投稿一覧</p>
+
+      @foreach($post_lists as $post_list)
+
+      <div class="post_block">
+        <ul class="posts_padding">
+          <li class="posts_flex mb-2">
+            <p>{{ $post_list->user->username }}さん</p>
+            <p>{{ $post_list->event_at }}</p>
+            <p>〇〇View</p>
+          </li>
+
+          <li class="mb-3">
+            <p>{{ $post_list->title }}</p>
+          </li>
+
+          <li class="posts_flex">
+            <p>{{ $post_list->postSubCategory->sub_category }}</p>
+            <p class="text-danger">コメント数</p>
+            <p class="text-danger">いいね数</p>
+            <p><a href="{{ route('post.show' ,[$post_list->id]) }}">詳細ページへ</a></p>
+          </li>
+
+        </ul>
+      </div>
+      @endforeach
     </section>
-    <!-- カテゴリー -->
+
+    <!-- カテゴリー（右半分） -->
     <section class="right_index">
       @can('admin')
       <a class="create_margin" href="{{ route('post_category.index') }}">

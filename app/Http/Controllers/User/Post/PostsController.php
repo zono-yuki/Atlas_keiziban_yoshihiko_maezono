@@ -14,7 +14,10 @@ class PostsController extends Controller
     // 掲示板一覧ページを表示する
     public function index()
     {
-        return view("post.user.index");
+        // dd(Post::postLists());
+        return view('post.user.index', [
+            'post_lists' => Post::postLists(),
+        ]);
     }
 
     // 投稿ページを表示する

@@ -1,14 +1,21 @@
-.admin_header{
-  width: 100%;
-  height: 115px;
-  background-color: #EEE ;
+body {
+    max-width: 100%;
 }
 
-.inner{
-  padding-right: 5%;
-  padding-left: 5%;
+.admin_header {
+    width: 100%;
+    height: 115px;
+    background-color: #eee;
 }
 
+.inner {
+    padding-right: 6%;
+    padding-left: 6%;
+}
+
+li{
+    list-style: none;
+}
 .button {
     padding: 15px 20px;
     background: #4169e1;
@@ -27,12 +34,13 @@
     font-weight: bold;
 }
 
-.original-gradient{
- display: flex;
- align-items: center;
- justify-content: space-between;
- width: 100%;
- height: 100%;
+.original-gradient {
+    background-color: #D9E5FF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
 }
 
 .thank_you {
@@ -43,23 +51,23 @@
 }
 
 /* 掲示板投稿一覧ページ */
-.main_index{
-  width: 100%;
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
+.main_index {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
 }
-.left_index{
-width:60%;
+.left_index {
+    width: 70%;
 }
-.right_index{
- width: 40%;
- text-align: left;
+.right_index {
+    width: 30%;
+    text-align: left;
 }
 .button_category {
     padding: 10px 20px;
     background: #cc4125;
-    width: 200px;
+    width: 70%;
     color: #fff;
     text-align: center;
     margin: 0 auto;
@@ -74,10 +82,10 @@ width:60%;
     font-weight: bold;
 }
 
-.button_category_blue{
+.button_category_blue {
     padding: 10px 20px;
     background: #4169e1;
-    width: 200px;
+    width: 50%;
     color: #fff;
     text-align: center;
     margin: 0 auto;
@@ -85,9 +93,33 @@ width:60%;
     transition: 0.3s;
 }
 
-.create_margin{
+.create_margin {
     display: block;
     margin-bottom: 20px;
+}
+
+.post_block {
+    width: 90%;
+    height: auto;
+    border: solid 2px #666;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.posts_padding{
+    padding: 3%;
+    margin-bottom: 0;
+}
+
+.posts_padding p{
+    margin-bottom: 0;
+}
+
+.posts_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* 投稿ボタン */
@@ -99,17 +131,16 @@ width:60%;
 }
 /* カテゴリー追加画面 */
 
-.category_new_form{
+.category_new_form {
     width: 400px;
-
 }
 
-.text_category{
+.text_category {
     display: block;
     width: 100%;
     height: 40px;
     margin-bottom: 20px;
-    background-color: #EEE;
+    background-color: #eee;
 }
 
 .button_category_create {
@@ -130,15 +161,15 @@ width:60%;
     font-weight: bold;
 }
 
-.register_error{
-   padding-left: 0;
+.register_error {
+    padding-left: 0;
 }
 
-.error-ul{
-  padding-left: 0;
+.error-ul {
+    padding-left: 0;
 }
 
-.error-message{
+.error-message {
     color: red;
     font-size: 20px;
     list-style: none;
@@ -146,7 +177,15 @@ width:60%;
 }
 
 /* サブカテゴリー登録 */
-.sub_category_new_form{
+
+.category_right_index {
+    width: 40%;
+}
+
+.category_left_index {
+    width: 60%;
+}
+.sub_category_new_form {
     width: 400px;
     height: auto;
     margin-top: 100px;
@@ -159,23 +198,22 @@ width:60%;
     /* margin-top: 17px; */
 }
 
-.select_sub_category{
+.select_sub_category {
     display: block;
     width: 100%;
     height: 40px;
-    background-color: #EEE;
+    background-color: #eee;
     margin-bottom: 30px;
 }
 
-.main_category_font{
+.main_category_font {
     list-style: none;
     font-size: 20px;
     font-weight: bold;
 }
 
-.sub_category_font{
-
-    list-style:none;
+.sub_category_font {
+    list-style: none;
     font-size: 16px;
     font-weight: bold;
     margin-right: 10px;
@@ -199,12 +237,12 @@ width:60%;
     font-weight: bold;
 }
 
-.flex-subcategory_delete{
+.flex-subcategory_delete {
     display: flex;
     justify-content: space-between;
 }
 
-.button_category_delete_main{
+.button_category_delete_main {
     font-size: 13px;
     padding: 3px 8px;
     background: #4169e1;
@@ -222,30 +260,32 @@ width:60%;
     font-weight: bold;
 }
 
-.flex-main_category{
+.flex-main_category {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-
 /* 新規投稿画面 */
 
-.post_top{
-  margin-top: 10%;
+.post_top {
+    margin-top: 10%;
 }
-.post_sub_category , .post_title ,.post_create , .post_button, .return{
+.post_sub_category,
+.post_title,
+.post_create,
+.post_button,
+.return {
     margin-top: 5%;
     margin-left: 10%;
     margin-bottom: 5%;
 }
 
-
-.select_sub_category_create{
+.select_sub_category_create {
     display: block;
     width: 70%;
     height: 40px;
-    background-color: #EEE;
+    background-color: #eee;
     border: #606060 solid 2px;
     font-size: 20px;
 }
@@ -256,25 +296,25 @@ width:60%;
     color: #666;
 }
 
-.post_title_text{
+.post_title_text {
     width: 70%;
     height: 40px;
-    background: #EEE;
+    background: #eee;
     border: #606060 solid 2px;
 }
 
-.post_title_text{
+.post_title_text {
     width: 70%;
     height: 40px;
-    background: #EEE;
+    background: #eee;
     border: #606060 solid 2px;
     font-size: 20px;
 }
 
-.post_body_text{
+.post_body_text {
     width: 70%;
     /* height: 300px; */
-    background: #EEE;
+    background: #eee;
     border: #606060 solid 2px;
     font-size: 20px;
     border: #606060 solid 2px;

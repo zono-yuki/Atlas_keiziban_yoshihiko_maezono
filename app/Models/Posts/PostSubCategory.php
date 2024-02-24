@@ -22,5 +22,7 @@ class PostSubCategory extends Model
         $post_sub_category -> delete();
     }
 
+    
+
 
 }
