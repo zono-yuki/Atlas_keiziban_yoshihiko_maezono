@@ -30,6 +30,8 @@ class PostMainCategoriesController extends Controller
         return view('post_category.admin.main_category_added');
     }
 
+
+    //メインカテゴリー削除機能
     public function destroy($id){
         PostMainCategory::postMainCategoryDestroy($id);
         return back();

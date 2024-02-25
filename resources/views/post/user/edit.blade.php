@@ -20,16 +20,18 @@
 
 <div class="inner">
   <div class="post_top">
+
+  <!-- 編集フォーム -->
    <form action="{{ route('post.update', [$post_detail->id]) }}" method="post">
      @method('PUT')
      @csrf
 
      <div class="post_sub_category">
-           {{--@if ($errors->has('post_sub_category_id'))
+           @if ($errors->has('post_sub_category_id'))
            @foreach($errors->get('post_sub_category_id') as $message)
               <p class="error-message"> {{ $message }} </p>
            @endforeach
-           @endif--}}
+           @endif
        <div class="">
          <p class="post_thank_you">サブカテゴリー</p>
        </div>
@@ -50,11 +52,11 @@
 
 
       <div class="post_title">
-        {{--@if ($errors->has('title'))
+        @if ($errors->has('title'))
         @foreach($errors->get('title') as $message)
         <p class="error-message"> {{ $message }} </p>
         @endforeach
-        @endif --}}
+        @endif
         <div class="">
           <p class="post_thank_you">タイトル</p>
         </div>
@@ -63,11 +65,11 @@
 
 
       <div class="post_create">
-        {{--@if ($errors->has('post'))
+        @if ($errors->has('post'))
         @foreach($errors->get('post') as $message)
         <p class="error-message"> {{ $message }} </p>
         @endforeach
-        @endif--}}
+        @endif
         <p class="post_thank_you">投稿内容</p>
         <!-- <textarea type="text" class="post_body_text" name="post" value="{{ $post_detail -> post }}"cols="50" rows="9" placeholder="{{ $post_detail->post }}"></textarea> -->
         <textarea type="text" class="post_body_text" name="post" value="" cols="50" rows="9">{{ $post_detail -> post }}</textarea>
@@ -77,10 +79,22 @@
       <div class="post_button">
         <button type="submit" class="button_post_create_blue">更新</button>
       </div>
-      <div class="post_button">
-        <button type="submit" class="button_post_create">削除</button>
-      </div>
+
    </form>
+
+   <!-- 削除フォーム -->
+
+   <form action="{{ route('post.destroy',[$post_detail->id]) }}" method="post">
+      @method('DELETE')
+      @csrf
+      <!-- 投稿者か、管理者のみ表示。 -->
+      @if(Auth::user()->contributorAndAdmin($post_detail->user_id))
+        <div class="post_button">
+          <button type="submit" class="button_post_create">削除</button>
+        </div>
+      @endif
+   </form>
+
 
    <!-- 戻るボタン -->
    <div class="return">

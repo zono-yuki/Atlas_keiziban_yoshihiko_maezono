@@ -65,4 +65,13 @@ class Post extends Model
         $data['post'] = $request->post;
         return $post_detail->fill($data)->save();
     }
+
+    //投稿の削除
+    public static function postDestroy($id)
+    {
+        // 投稿を探す処理
+        $post = Post::findOrFail($id);
+        // 投稿の削除
+        $post->delete();
+    }
 }

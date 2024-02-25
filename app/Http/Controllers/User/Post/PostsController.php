@@ -9,6 +9,8 @@ use App\Models\Posts\PostMainCategory;
 use App\Models\Posts\Post;
 use App\Models\Users\User;
 use App\Http\Requests\PostFormRequest;
+use App\Http\Requests\PostUpdateFormRequest;
+
 
 class PostsController extends Controller
 {
@@ -79,7 +81,7 @@ class PostsController extends Controller
     }
 
     //投稿編集update処理
-    public function update(Request $request, $id)
+    public function update(PostUpdateFormRequest $request, $id)
     {
         //投稿idから投稿を取得する $idは投稿id
         $post_detail = Post::postDetail($id);
@@ -95,5 +97,11 @@ class PostsController extends Controller
         return \App::abort(403, 'Unauthorized action.');
     }
 
+    //投稿削除処理（投稿者、管理者のみ）
+    public function destroy($id)
+    {
+        Post::postDestroy($id);
+        return redirect()->route('post.index');
+    }
 
 }
