@@ -55,6 +55,10 @@ class Post extends Model
         return self ::postQuery()->findOrFail($id);
     }
 
+// ---------------------------------------------------
+
+    //投稿の更新処理
+    
 
 
 

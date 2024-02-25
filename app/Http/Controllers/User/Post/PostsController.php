@@ -75,6 +75,6 @@ class PostsController extends Controller
             ]);
         }
         //投稿者か管理者でなければ、403エラーを表示させる。
-        return \App::abort(403, 'あなたは誰ですか？？？入れません！！。Unauthorized action.');
+        return \App::abort(403, 'あなたは誰でしょうか？入れません!!。Unauthorized action.');
     }
 }

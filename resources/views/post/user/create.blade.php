@@ -72,10 +72,11 @@
         <textarea class="post_body_text" name="post" cols="50" rows="9" placeholder="投稿内容を入力してください。"></textarea>
       </div>
 
+
       <div class="post_button">
         <button type="submit" class="button_post_create">投稿</button>
       </div>
-
+      
     </form>
 
 
