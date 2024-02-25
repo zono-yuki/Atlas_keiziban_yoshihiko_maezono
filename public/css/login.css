@@ -9,8 +9,8 @@ body {
 }
 
 .inner {
-    padding-right: 6%;
-    padding-left: 6%;
+    padding-right: 12%;
+    padding-left: 12%;
 }
 
 li{
@@ -91,6 +91,13 @@ li{
     margin: 0 auto;
     border-radius: 8px;
     transition: 0.3s;
+}
+
+.button_category_blue:hover {
+    background-color: #666;
+    opacity: 0.7;
+    color: #fff;
+    font-weight: bold;
 }
 
 .create_margin {
@@ -269,6 +276,8 @@ li{
 /* 新規投稿画面 */
 
 .post_top {
+    width: 100%;
+    margin: 0 auto;
     margin-top: 10%;
 }
 .post_sub_category,
@@ -276,6 +285,7 @@ li{
 .post_create,
 .post_button,
 .return {
+    width: 100%;
     margin-top: 5%;
     margin-left: 10%;
     margin-bottom: 5%;
@@ -291,6 +301,7 @@ li{
 }
 
 .post_thank_you {
+    width: 100%;
     font-size: 1.7rem;
     font-weight: bold;
     color: #666;
@@ -338,4 +349,76 @@ li{
     opacity: 0.7;
     color: blue;
     font-weight: bold;
+}
+
+/* 掲示板詳細 */
+
+.main_post{
+    margin: 0 atuo;
+    margin-top: 5%;
+}
+
+.post_name_at{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+}
+
+.comment_like{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 35%;
+}
+
+.post_detail_block {
+    width: 100%;
+    height: auto;
+    border: solid 2px #666;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.posts_detail_padding{
+    padding: 2%;
+    margin-bottom: 0;
+}
+
+.button_detail_update {
+    padding: 10px 20px;
+    background:#CC4125;
+    width: 150px;
+    height: atuo;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.button_detail_update:hover {
+    background-color: #666;
+    opacity: 0.7;
+    color: #fff;
+    font-weight: bold;
+}
+
+.post_title_font{
+    font-size: 35px;
+    color: #4169e1;
+    font-weight: bold;
+}
+
+.post_body_font{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.detail_sub_category{
+    background-color:#F4B400;
+    padding: 10px 20px;
+    color:#fff;
+    border-radius: 7px;
 }

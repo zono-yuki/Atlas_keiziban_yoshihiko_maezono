@@ -13,16 +13,26 @@ class PostSubCategory extends Model
         'sub_category',
     ];
 
-    //サブカテゴリーの削除
-    public static function postSubCategoryDestroy($id)
+
+    //Postとのリレーション 1対多
+    public function post()
     {
-        // 対象のレコードを探す処理
-        $post_sub_category = PostSubCategory::findOrFail($id);
-        // レコードの削除
-        $post_sub_category -> delete();
+        return $this->hasMany('App\Models\Posts\Post');
     }
 
-    
+    //掲示板の投稿があるかどうかの判断
+    public function postIsExistence($post_sub_category)
+    {
+        return $post_sub_category->post->isEmpty();
+    }
 
-
+    //サブカテゴリーの削除処理
+    public static function postSubCategoryDestroy($id)
+    {
+        $post_sub_category = PostSubCategory::findOrFail($id);
+        if($post_sub_category -> postIsExistence($post_sub_category)){
+            $post_sub_category -> delete();
+        }
+        return \App::abort(404);
+    }
 }

@@ -49,4 +49,11 @@ class PostsController extends Controller
         ]);
         return redirect()->route('post.index');
     }
+
+    public function show($id)//投稿のID
+    {
+        return view('post.user.show', [
+            'post_detail' => Post::postDetail($id),
+        ]);
+    }
 }

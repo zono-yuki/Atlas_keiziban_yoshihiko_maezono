@@ -120,11 +120,13 @@
             <div class="flex-subcategory_delete">
               <li class="sub_category_font">{{ $post_sub_category -> sub_category }}</li>
 
-              <form action="{{ route('post_sub_category.destroy',[$post_sub_category->id]) }}" method="post" name="post_sub_category_delete{{ $post_sub_category->id }}">
-                @method('DELETE')
-                @csrf
-                <a href="javascript:post_sub_category_delete{{ $post_sub_category->id }}.submit()"><button type="submit" class="button_category_delete">削除</button></a>
+              @if($post_sub_category->postIsExistence($post_sub_category))
+                <form action="{{ route('post_sub_category.destroy',[$post_sub_category->id]) }}" method="post"  name="post_sub_category_delete{{ $post_sub_category->id }}">
+                  @method('DELETE')
+                  @csrf
+                  <a href="javascript:post_sub_category_delete{{ $post_sub_category->id }}.submit()"><button type="submit" class="button_category_delete">削除</button></a>
               </form>
+              @endif
 
             </div>
 

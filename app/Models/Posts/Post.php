@@ -32,6 +32,7 @@ class Post extends Model
         return $this->belongsTo('App\Models\Posts\PostSubCategory', 'post_sub_category_id');
     }
 
+//----------------------------------------------------
     //クエリ作成（N＋1対策）
     public static function postQuery()
     {
@@ -46,6 +47,14 @@ class Post extends Model
     {
         return self::postQuery()->get();
     }
+// ---------------------------------------------------
+
+    public static function postDetail($id)
+    {
+        return self ::postQuery()->findOrFail($id);
+    }
+
+
 
 
 
