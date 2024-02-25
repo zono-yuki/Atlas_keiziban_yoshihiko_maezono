@@ -77,4 +77,23 @@ class PostsController extends Controller
         //投稿者か管理者でなければ、403エラーを表示させる。
         return \App::abort(403, 'あなたは誰でしょうか？入れません!!。Unauthorized action.');
     }
+
+    //投稿編集update処理
+    public function update(Request $request, $id)
+    {
+        //投稿idから投稿を取得する $idは投稿id
+        $post_detail = Post::postDetail($id);
+
+        //投稿者や管理者かどうかを選別する
+        if(User::contributorAndAdmin($post_detail->user_id)){
+            //更新処理を行う。
+            $post_detail->postUpdate($request,$post_detail);
+            //詳細画面へ戻る
+            return redirect()->route('post.show', [$id]);
+        }
+        //エラー画面を表示
+        return \App::abort(403, 'Unauthorized action.');
+    }
+
+
 }

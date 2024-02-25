@@ -55,14 +55,14 @@ class Post extends Model
         return self ::postQuery()->findOrFail($id);
     }
 
-// ---------------------------------------------------
+    // ---------------------------------------------------
 
     //投稿の更新処理
-    
-
-
-
-
-
-
+    public static function postUpdate($request, $post_detail)
+    {
+        $data['post_sub_category_id'] = $request->post_sub_category_id;
+        $data['title'] = $request->title;
+        $data['post'] = $request->post;
+        return $post_detail->fill($data)->save();
+    }
 }
