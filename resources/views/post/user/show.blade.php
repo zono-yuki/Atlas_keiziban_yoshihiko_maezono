@@ -36,8 +36,12 @@
 
           <li class="posts_flex mb-3">
             <p class="post_title_font">{{ $post_detail->title }}</p>
-            {{-- <p ><a href="{{ route('post.show' ,[$post_list->id]) }}">編集</a></p> --}}
-            <a href=""><button type="submit" class="button_detail_update">編集</button></a>
+
+            <!-- 投稿者か管理者のみが編集ボタンが表示される -->
+            @if(Auth::user()->contributorAndAdmin($post_detail->user_id))
+              <a href="{{ route('post.edit',[$post_detail->id]) }}"><button type="submit" class="button_detail_update">編集</button></a>
+            @endif
+
           </li>
 
           <li class="posts_flex mb-3">

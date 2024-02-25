@@ -32,7 +32,7 @@
         <ul class="posts_padding">
           <li class="posts_flex mb-2">
             <p>{{ $post_list->user->username }}さん</p>
-            <p>{{ $post_list->event_at }}</p>
+            <p>{{ date("Y年m月d日 H:i",strtotime($post_list->event_at)) }}</p>
             <p>〇〇View</p>
           </li>
 

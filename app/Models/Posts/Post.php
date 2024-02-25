@@ -42,13 +42,14 @@ class Post extends Model
         ]);
     }
 
-    //投稿一覧を表示するために投稿データを取得する
+    //投稿一覧を表示するために投稿データを全て取得する
     public static function postLists()
     {
         return self::postQuery()->get();
     }
 // ---------------------------------------------------
 
+    //投稿idから投稿データを1つ取得する
     public static function postDetail($id)
     {
         return self ::postQuery()->findOrFail($id);
