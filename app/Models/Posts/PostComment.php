@@ -16,4 +16,10 @@ class PostComment extends Model
         'comment',
         'event_at',
     ];
+
+    //Userとのリレーション
+    public function user()
+    {
+        return $this->belongsTo('App\Models\Users\User', 'user_id');
+    }
 }

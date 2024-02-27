@@ -32,6 +32,13 @@ class Post extends Model
         return $this->belongsTo('App\Models\Posts\PostSubCategory', 'post_sub_category_id');
     }
 
+    //PostCommentとのリレーション
+    public function postComments()
+    {
+        return $this->hasMany('App\Models\Posts\PostComment');
+    }
+
+
 //----------------------------------------------------
     //クエリ作成（N＋1対策）
     public static function postQuery()
@@ -39,6 +46,8 @@ class Post extends Model
         return self::with([
             'user',
             'postSubCategory',
+            'postComments.user',
+            //postCommentsのuserメソッドとのリレーションで、postテーブルのuser_idと同じユーザーをuserからもってくる
         ]);
     }
 
@@ -74,4 +83,5 @@ class Post extends Model
         // 投稿の削除
         $post->delete();
     }
+
 }

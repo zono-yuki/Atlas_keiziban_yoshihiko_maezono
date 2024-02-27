@@ -22,49 +22,76 @@
   <div class="main_post">
 
 
-      <div class="post_detail_block">
-        <ul class="posts_detail_padding">
-          <li class="posts_flex mb-3">
-            <div class="post_name_at">
-              <p>{{ $post_detail->user->username }}さん</p>
-              <!-- 秒数消す -->
-             <p>{{ date("Y年m月d日 H:i",strtotime($post_detail->event_at)) }}</p>
-            </div>
+    <div class="post_detail_block">
+      <ul class="posts_detail_padding">
+        <li class="posts_flex mb-3">
+          <div class="post_name_at">
+            <p>{{ $post_detail->user->username }}さん</p>
+            <!-- 秒数消す -->
+            <p>{{ date("Y年m月d日 H:i",strtotime($post_detail->event_at)) }}</p>
+          </div>
 
-            <p>〇〇View</p>
-          </li>
+          <p>〇〇View</p>
+        </li>
 
-          <li class="posts_flex mb-3">
-            <p class="post_title_font">{{ $post_detail->title }}</p>
+        <li class="posts_flex mb-3">
+          <p class="post_title_font">{{ $post_detail->title }}</p>
 
-            <!-- 投稿者か管理者のみが編集ボタンが表示される -->
-            @if(Auth::user()->contributorAndAdmin($post_detail->user_id))
-              <a href="{{ route('post.edit',[$post_detail->id]) }}"><button type="submit" class="button_detail_update">編集</button></a>
-            @endif
+          <!-- 投稿者か管理者のみが編集ボタンが表示される -->
+          @if(Auth::user()->contributorAndAdmin($post_detail->user_id))
+          <a href="{{ route('post.edit',[$post_detail->id]) }}"><button type="submit" class="button_detail_update">編集</button></a>
+          @endif
 
-          </li>
+        </li>
 
-          <li class="posts_flex mb-3">
-            <p class="post_body_font">{{ $post_detail->post }}</p>
-          </li>
+        <li class="posts_flex mb-3">
+          <p class="post_body_font">{{ $post_detail->post }}</p>
+        </li>
 
-          <li class="posts_flex">
-            <p class="detail_sub_category">{{ $post_detail->postSubCategory->sub_category }}</p>
-            <div class="comment_like">
-              <p class="">コメント数</p>
-              <p class="">いいね数</p>
-            </div>
+        <li class="posts_flex">
+          <p class="detail_sub_category">{{ $post_detail->postSubCategory->sub_category }}</p>
+          <div class="comment_like">
+            <p class="">コメント数</p>
+            <p class="">いいね数</p>
+          </div>
 
-          </li>
+        </li>
 
-        </ul>
+      </ul>
+    </div>
+
+
+    <div class="">
+      @foreach($post_detail->postComments as $post_comment)
+      <p>{{ $post_comment -> user -> username }}</p>
+      <p>{{ $post_comment -> comment }}</p>
+      <p>{{ $post_comment -> event_at }}</p>
+      <p class="text-danger">いいね数</p>
+      @if(Auth::user()->contributorAndAdmin($post_comment->user_id))
+      <a href="{{ route('post_comment.edit', [$post_comment->id]) }}">コメントの編集</a>
+      @endif
+      <hr>
+      @endforeach
+    </div>
+
+
+    <!-- コメント入力欄 -->
+    <form action="{{ route('post_comment.store',[$post_detail->id]) }}" method="post">
+      @csrf
+      <div class="">
+        <textarea type="text" name="comment" class="post_comment_text" cols="50" rows="5" placeholder="こちらからコメントできます♫
+        "></textarea>
       </div>
+      <div class="text-right">
+        <button type="submit" class="button_comment">Comment</button>
+      </div>
+    </form>
 
 
-        <!-- 戻るボタン -->
-        <div class="text-center mt-5">
-          <a href="{{ route('post.index') }}"><button type="submit" class="button">戻る</button></a>
-        </div>
+    <!-- 戻るボタン -->
+    <div class="text-center mt-5">
+      <a href="{{ route('post.index') }}"><button type="submit" class="button">戻る</button></a>
+    </div>
   </div>
 </div>
 
