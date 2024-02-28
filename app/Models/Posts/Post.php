@@ -84,4 +84,10 @@ class Post extends Model
         $post->delete();
     }
 
+    //投稿に対してのコメントがあるかどうかの判断(nullならtrueを返す)
+    public static function postCommentIsExistence($post_detail)
+    {
+        return $post_detail -> postComments ->isEmpty();
+    }
+
 }

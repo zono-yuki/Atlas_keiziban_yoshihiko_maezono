@@ -61,16 +61,28 @@
     </div>
 
 
-    <div class="">
+    <div class="show_comment_box">
       @foreach($post_detail->postComments as $post_comment)
-      <p>{{ $post_comment -> user -> username }}</p>
-      <p>{{ $post_comment -> comment }}</p>
-      <p>{{ $post_comment -> event_at }}</p>
-      <p class="text-danger">いいね数</p>
-      @if(Auth::user()->contributorAndAdmin($post_comment->user_id))
-      <a href="{{ route('post_comment.edit', [$post_comment->id]) }}">コメントの編集</a>
-      @endif
-      <hr>
+
+      <div class="show_comment_top">
+        <div class="show_comment_name">
+          <p class="comment_name">{{ $post_comment -> user -> username }}さん</p>
+          <p class="comment_event_at">{{ $post_comment -> event_at }}</p>
+        </div>
+        <div class="show_comment_edit">
+          @if(Auth::user()->contributorAndAdmin($post_comment->user_id))
+          <a href="{{ route('post_comment.edit', [$post_comment->id]) }}"><button type="submit" class="button_detail_update">コメント編集</button></a>
+          @endif
+        </div>
+      </div>
+
+      <div class="comment_show_sum">
+        <p class="comment_show">{{ $post_comment -> comment }}</p>
+        <p class="comment_sum text-danger">いいね数</p>
+      </div>
+
+
+      <hr class="comment_hr">
       @endforeach
     </div>
 

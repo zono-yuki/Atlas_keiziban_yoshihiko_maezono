@@ -82,8 +82,9 @@
 
    </form>
 
-   <!-- 削除フォーム -->
+   <!-- 削除フォーム (投稿に対するコメントがある状態だと、投稿は削除できない)-->
 
+   @if($post_detail->postCommentIsExistence($post_detail))
    <form action="{{ route('post.destroy',[$post_detail->id]) }}" method="post">
       @method('DELETE')
       @csrf
@@ -94,6 +95,7 @@
         </div>
       @endif
    </form>
+   @endif
 
 
    <!-- 戻るボタン -->
