@@ -51,8 +51,12 @@
         <li class="posts_flex">
           <p class="detail_sub_category">{{ $post_detail->postSubCategory->sub_category }}</p>
           <div class="comment_like">
-            <p class="">コメント数</p>
-            <p class="">いいね数</p>
+            <div class="comment_num">
+              <p class="">コメント数</p>
+              <p>{{ $post_detail->postComments->count() }}</p>
+            </div>
+
+            <p class="like_num">いいね数</p>
           </div>
 
         </li>
@@ -101,14 +105,11 @@
 
 
     <!-- 戻るボタン -->
-    <div class="text-center mt-5">
+    <div class="text-center mt-5 mb-5">
       <a href="{{ route('post.index') }}"><button type="submit" class="button">戻る</button></a>
     </div>
   </div>
 </div>
-
-
-
 @endsection
 
 @include('layout.login.footer')

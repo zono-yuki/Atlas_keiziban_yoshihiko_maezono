@@ -9,8 +9,8 @@ body {
 }
 
 .inner {
-    padding-right: 12%;
-    padding-left: 12%;
+    padding-right: 6%;
+    padding-left:  6%;
 }
 
 li{
@@ -478,6 +478,17 @@ li{
 .show_comment_box{
     font-weight: bold;
     margin-bottom: 50px;
+}
+
+.comment_num{
+    width:200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.like_num{
+    width:200px;
 }
 
 

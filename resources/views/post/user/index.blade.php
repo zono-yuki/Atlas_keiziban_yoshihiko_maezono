@@ -43,6 +43,7 @@
           <li class="posts_flex">
             <p>{{ $post_list->postSubCategory->sub_category }}</p>
             <p class="text-danger">コメント数</p>
+            <p class="text-danger">{{ $post_list->postComments->count() }}</p>
             <p class="text-danger">いいね数</p>
             <p><a href="{{ route('post.show' ,[$post_list->id]) }}">詳細ページへ</a></p>
           </li>

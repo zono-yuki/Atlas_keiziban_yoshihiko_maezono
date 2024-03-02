@@ -19,7 +19,7 @@ class User extends Authenticatable
         'admin_role',
     ];
 
-    //投稿者か管理者かを調べる（投稿編集できる者）、投稿者のidがとんでくる
+    //投稿やコメントの投稿者が、投稿者もしくは管理者かどうかを調べる（投稿、コメント編集できる者）、投稿者のidがとんでくる
     public static function contributorAndAdmin($id)
     {
         //ログインユーザーが、投稿者か、管理者の役職であるかどうか
