@@ -51,8 +51,20 @@
               <p class="">{{ $post_list->postComments->count() }}</p>
             </div>
             <div class="posts_like_flex">
-              <p class="text-danger">いいね数</p>
-              <p class="text-danger">{{ $post_list->userPostFavoriteRelations->count() }}</p>
+              <p class="text-danger">
+              @if($post_list->postFavoriteIsExistence($post_list))
+              <a class="post_favorite_key" post_id="{{ $post_list->id }}" post_favorite_id="0" style="color:#FF0000; text-decoration: none;">
+                <i class="far fa-heart"></i>
+              </a>
+              @else
+              <a class="post_favorite_key" post_id="{{ $post_list->id }}" post_favorite_id="1" style="color:#FF0000; text-decoration: none;">
+                <i class="fas fa-heart"></i>
+              </a>
+              @endif
+              <span class="ml-2"id="post_favorite_count{{ $post_list->id }}">
+                {{ $post_list->userPostFavoriteRelations->count() }}
+              </span>
+              </p>
             </div>
             <p class="posts_detail_go"><a href="{{ route('post.show' ,[$post_list->id]) }}">詳細ページへ</a></p>
 
