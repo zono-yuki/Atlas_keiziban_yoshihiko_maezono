@@ -3,6 +3,8 @@
 namespace App\Models\Posts;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+
 
 class PostComment extends Model
 {
@@ -23,12 +25,36 @@ class PostComment extends Model
         return $this->belongsTo('App\Models\Users\User', 'user_id');
     }
 
+    //Userとのリレーション（多対多）
+    public function userCommentFavoriteRelations()
+    {
+        return $this->belongsToMany('App\Models\Users\User', 'post_comment_favorites', 'post_comment_id' , 'user_id');
+    }
+
+    //投稿に対するコメントのいいね登録、削除処理
+    public static function postCommentFavoriteCreateOrDestroy($post_comment_id, $post_comment_favorite_id)
+    {
+        $post_comment_detail = self::findOrFail($post_comment_id);
+        if($post_comment_favorite_id){
+            return $post_comment_detail->userCommentFavoriteRelations()->detach(Auth::id());//中間テーブルのレコード削除
+        } else{
+            return $post_comment_detail->userCommentFavoriteRelations()->attach(Auth::id());//中間テーブルのレコード登録
+        }
+    }
+
+    //　コメントに対してログインしているユーザーがいいねしているかどうかの判断（nullだったらtrueを返す)
+    public static function commentFavoriteIsExistence($post_comment_detail)
+    {
+        return is_null($post_comment_detail->userCommentFavoriteRelations->find(Auth::id()));
+    }
+
     //----------------------------------------------------
     //クエリ作成（N＋1対策）
     public static function commentQuery()
     {
         return self::with([
             'user',
+            'userCommentFavoriteRelations',
         ]);
     }
     //コメントidからコメントデータを1つ取得する

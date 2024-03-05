@@ -99,7 +99,21 @@
 
       <div class="comment_show_sum">
         <p class="comment_show">{{ $post_comment -> comment }}</p>
-        <p class="comment_sum text-danger">いいね数</p>
+        <p class="comment_sum text-danger">
+          <!-- コメントいいね機能作成中 -->
+              @if($post_comment->commentFavoriteIsExistence($post_comment))
+              <a class="post_comment_favorite_key" post_comment_id="{{ $post_comment->id }}" post_comment_favorite_id="0" style="color:#FF0000; text-decoration: none;">
+                <i class="far fa-heart"></i>
+              </a>
+              @else
+              <a class="post_comment_favorite_key" post_comment_id="{{ $post_comment->id }}" post_comment_favorite_id="1" style="color:#FF0000; text-decoration: none;">
+                <i class="fas fa-heart"></i>
+              </a>
+              @endif
+              <span class="ml-2"id="post_comment_favorite_count{{ $post_comment->id }}">
+                {{ $post_comment->userCommentFavoriteRelations->count() }}
+              </span>
+        </p>
       </div>
 
 
