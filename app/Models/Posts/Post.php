@@ -3,6 +3,7 @@
 namespace App\Models\Posts;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -38,31 +39,64 @@ class Post extends Model
         return $this->hasMany('App\Models\Posts\PostComment');
     }
 
+    //ActionLogとのリレーション
+    public function actionLogs()
+    {
+        return $this->hasMany('App\Models\ActionLogs\ActionLog');
+    }
+
+    //Userとのリレーション（多対多）
+    public function userPostFavoriteRelations()
+    {
+        return $this->belongsToMany('App\Models\Users\User', 'post_favorites', 'post_id' , 'user_id');
+    }
+
+    //掲示板の投稿のいいね登録、削除処理
+    public static function postFavoriteCreateOrDestroy($post_id, $post_favorite_id)
+    {
+        $post_detail = self::findOrFail($post_id);
+        if($post_favorite_id){
+            return $post_detail->userPostFavoriteRelations()->detach(Auth::id());//中間テーブルのレコード削除
+        } else{
+            return $post_detail->userPostFavoriteRelations()->attach(Auth::id());//中間テーブルのレコード登録
+        }
+    }
+
+    //　投稿に対してログインしているユーザーがいいねしているかどうかの判断（nullだったらtrueを返す)
+    public static function postFavoriteIsExistence($post_detail)
+    {
+        return is_null($post_detail->userPostFavoriteRelations->find(Auth::id()));
+    }
 
 //----------------------------------------------------
     //クエリ作成（N＋1対策）
     public static function postQuery()
     {
         return self::with([
+            //リレーション名を書く。
             'user',
+            'userPostFavoriteRelations',
             'postSubCategory',
             'postComments.user',
+            'actionLogs'
             //postCommentsのuserメソッドとのリレーションで、postテーブルのuser_idと同じユーザーをuserからもってくる
         ]);
     }
 
+    //投稿idから投稿データを1つ取得する
+    public static function postDetail($id)
+    {
+        return self::postQuery()->findOrFail($id);
+    }
+
+    // ---------------------------------------------------
     //投稿一覧を表示するために投稿データを全て取得する
     public static function postLists()
     {
         return self::postQuery()->get();
     }
-// ---------------------------------------------------
 
-    //投稿idから投稿データを1つ取得する
-    public static function postDetail($id)
-    {
-        return self ::postQuery()->findOrFail($id);
-    }
+
 
     // ---------------------------------------------------
 

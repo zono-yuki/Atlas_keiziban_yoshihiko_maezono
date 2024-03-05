@@ -71,11 +71,10 @@ Route::group(['middleware' => ['auth']], function(){
                 Route::resource('post','PostsController',['only' => ['create','store','edit','update','destroy']]);
 
                 //view数カウント
-                // Route::group(['middleware' => ['post.show']], function(){
-
+                Route::group(['middleware' => ['post.show']], function(){
                 //投稿詳細画面表示
                 Route::get('/post/{post}', 'PostsController@show')->name('post.show');
-                // });
+                });
 
                 //掲示板コメント投稿処理
                 Route::post('/post_comment/{post_comment}', 'PostCommentsController@store')->name('post_comment.store');

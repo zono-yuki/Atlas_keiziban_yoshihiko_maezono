@@ -33,7 +33,11 @@
           <li class="posts_flex mb-2">
             <p>{{ $post_list->user->username }}さん</p>
             <p>{{ date("Y年m月d日 H:i",strtotime($post_list->event_at)) }}</p>
-            <p>〇〇View</p>
+            <div class="view_flex">
+              <p>{{ $post_list -> actionLogs -> count() }}</p>
+              <p class="ml-2">View</p>
+            </div>
+
           </li>
 
           <li class="mb-3">
@@ -41,11 +45,17 @@
           </li>
 
           <li class="posts_flex">
-            <p>{{ $post_list->postSubCategory->sub_category }}</p>
-            <p class="text-danger">コメント数</p>
-            <p class="text-danger">{{ $post_list->postComments->count() }}</p>
-            <p class="text-danger">いいね数</p>
-            <p><a href="{{ route('post.show' ,[$post_list->id]) }}">詳細ページへ</a></p>
+            <p class="posts_category">{{ $post_list->postSubCategory->sub_category }}</p>
+            <div class="posts_comment_flex">
+              <p class="">コメント数</p>
+              <p class="">{{ $post_list->postComments->count() }}</p>
+            </div>
+            <div class="posts_like_flex">
+              <p class="text-danger">いいね数</p>
+              <p class="text-danger">{{ $post_list->userPostFavoriteRelations->count() }}</p>
+            </div>
+            <p class="posts_detail_go"><a href="{{ route('post.show' ,[$post_list->id]) }}">詳細ページへ</a></p>
+
           </li>
 
         </ul>

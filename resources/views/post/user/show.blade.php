@@ -31,7 +31,11 @@
             <p>{{ date("Y年m月d日 H:i",strtotime($post_detail->event_at)) }}</p>
           </div>
 
-          <p>〇〇View</p>
+          <div class="view_flex">
+            <p class="">{{ $post_detail->actionLogs->count() }} </p>
+            <p class="ml-3">View</p>
+          </div>
+
         </li>
 
         <li class="posts_flex mb-3">
@@ -41,6 +45,7 @@
           @if(Auth::user()->contributorAndAdmin($post_detail->user_id))
           <a href="{{ route('post.edit',[$post_detail->id]) }}"><button type="submit" class="button_detail_update">編集</button></a>
           @endif
+
 
         </li>
 
@@ -55,8 +60,20 @@
               <p class="">コメント数</p>
               <p>{{ $post_detail->postComments->count() }}</p>
             </div>
-
-            <p class="like_num">いいね数</p>
+            <p class="like_num">
+              @if($post_detail->postFavoriteIsExistence($post_detail))
+              <a class="post_favorite_key" post_id="{{ $post_detail->id }}" post_favorite_id="0" style="color:#FF0000; text-decoration: none;">
+                <i class="far fa-heart"></i>
+              </a>
+              @else
+              <a class="post_favorite_key" post_id="{{ $post_detail->id }}" post_favorite_id="1" style="color:#FF0000; text-decoration: none;">
+                <i class="fas fa-heart"></i>
+              </a>
+              @endif
+              <span class="ml-2"id="post_favorite_count{{ $post_detail->id }}">
+                {{ $post_detail->userPostFavoriteRelations->count() }}
+              </span>
+            </p>
           </div>
 
         </li>

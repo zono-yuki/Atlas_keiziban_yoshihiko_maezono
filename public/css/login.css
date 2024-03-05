@@ -9,11 +9,11 @@ body {
 }
 
 .inner {
-    padding-right: 6%;
-    padding-left:  6%;
+    padding-right: 5%;
+    padding-left: 5%;
 }
 
-li{
+li {
     list-style: none;
 }
 .button {
@@ -36,7 +36,7 @@ li{
 }
 
 .original-gradient {
-    background-color: #D9E5FF;
+    background-color: #d9e5ff;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,10 +59,10 @@ li{
     justify-content: space-between;
 }
 .left_index {
-    width: 70%;
+    width: 75%;
 }
 .right_index {
-    width: 30%;
+    width: 25%;
     text-align: left;
 }
 .button_category {
@@ -107,20 +107,21 @@ li{
 }
 
 .post_block {
-    width: 90%;
+    width: 97%;
     height: auto;
-    border: solid 2px #666;
+    border: solid 2px blue;
     margin-bottom: 30px;
     font-size: 20px;
     font-weight: bold;
 }
 
-.posts_padding{
-    padding: 3%;
+.posts_padding {
+    width:100%;
+    padding: 15px;
     margin-bottom: 0;
 }
 
-.posts_padding p{
+.posts_padding p {
     margin-bottom: 0;
 }
 
@@ -128,6 +129,29 @@ li{
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.posts_category {
+    min-width: 250px;
+}
+
+.posts_comment_flex {
+    color: blue;
+    width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.posts_like_flex{
+    width: 150px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.posts_detail_go{
+    width:150px;
 }
 
 /* 投稿ボタン */
@@ -330,7 +354,7 @@ li{
     border: #606060 solid 2px;
     font-size: 20px;
     resize: none;
-    color:#151515;
+    color: #151515;
 }
 
 .button_post_create_blue {
@@ -373,19 +397,19 @@ li{
 
 /* 掲示板詳細 */
 
-.main_post{
+.main_post {
     margin: 0 atuo;
     margin-top: 5%;
 }
 
-.post_name_at{
+.post_name_at {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 40%;
 }
 
-.comment_like{
+.comment_like {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -401,7 +425,7 @@ li{
     font-weight: bold;
 }
 
-.posts_detail_padding{
+.posts_detail_padding {
     padding: 2%;
     margin-bottom: 0;
 }
@@ -413,12 +437,12 @@ li{
     border: #606060 solid 2px;
     font-size: 20px;
     resize: none;
-    color:#151515;
+    color: #151515;
 }
 
 .button_detail_update {
     padding: 10px 20px;
-    background:#CC4125;
+    background: #cc4125;
     width: 150px;
     height: atuo;
     color: #fff;
@@ -435,10 +459,9 @@ li{
     font-weight: bold;
 }
 
-
 .button_comment {
     padding: 10px 20px;
-    background:#006400;
+    background: #006400;
     width: 150px;
     height: atuo;
     color: #fff;
@@ -456,90 +479,96 @@ li{
     font-weight: bold;
 }
 
-.post_title_font{
+.post_title_font {
     font-size: 35px;
     color: #4169e1;
     font-weight: bold;
 }
 
-.post_body_font{
+.post_body_font {
     font-size: 25px;
     font-weight: bold;
 }
 
-.detail_sub_category{
-    background-color:#F4B400;
+.detail_sub_category {
+    background-color: #f4b400;
     padding: 10px 20px;
-    color:#fff;
+    color: #fff;
     border-radius: 7px;
 }
 
-
-.show_comment_box{
+.show_comment_box {
     font-weight: bold;
     margin-bottom: 50px;
 }
 
-.comment_num{
-    width:200px;
+.comment_num {
+    width: 200px;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.like_num{
-    width:200px;
+.like_num {
+    width: 200px;
+    text-align: center;
+
 }
 
+.view_flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /* -------------------------- */
-.show_comment_top{
+.show_comment_top {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.show_comment_name{
+.show_comment_name {
     display: flex;
     align-items: center;
-    width:500px;
+    width: 500px;
 }
 
-.show_comment_name p{
+.show_comment_name p {
     margin-bottom: 0;
 }
 
-.show_comment_edit{
+.show_comment_edit {
     text-align: right;
 }
 
-.comment_name{
+.comment_name {
     color: #4169e1;
-    width:70%;
+    width: 70%;
 }
 
-.comment_event_at{
-    width:30%;
+.comment_event_at {
+    width: 30%;
 }
 
 /* -------------------------- */
 
-.comment_show_sum{
+.comment_show_sum {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
 }
 
-.comment_show{
-    width: 80%
+.comment_show {
+    width: 80%;
 }
 
-.comment_sum{
+.comment_sum {
     text-align: right;
     width: 20%;
 }
 
-.comment_hr{
-    border-bottom: 3px #F4B400 solid;
+.comment_hr {
+    border-bottom: 3px #f4b400 solid;
 }
