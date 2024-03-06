@@ -14,12 +14,12 @@ use App\Http\Requests\PostUpdateFormRequest;
 
 class PostsController extends Controller
 {
-    // 掲示板一覧ページを表示する
-    public function index()
+    // 掲示板一覧ページを表示する nullなぜつける？外すとエラーになるけど、なんで
+    public function index($category_id = null)
     {
-        // dd(Post::postLists());
         return view('post.user.index', [
-            'post_lists' => Post::postLists(),
+            'post_lists' => Post::postLists($category_id),
+            'post_main_categories' => PostMainCategory::postMainCategoryLists(),
         ]);
     }
 

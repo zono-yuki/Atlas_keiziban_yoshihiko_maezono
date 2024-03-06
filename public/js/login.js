@@ -79,4 +79,11 @@ $(function () {
         alert('いいね処理失敗');
       });
   });
+
+  //カテゴリー選択
+  $('#post_sub_category_change').on('change', function () {
+    var category_id = $('option:selected').data('category_id');
+    var url = '/post/index/' + category_id;
+    window.location = url;
+  });
 });

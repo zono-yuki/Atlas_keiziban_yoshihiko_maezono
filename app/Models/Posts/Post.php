@@ -88,16 +88,18 @@ class Post extends Model
     {
         return self::postQuery()->findOrFail($id);
     }
-
     // ---------------------------------------------------
     //投稿一覧を表示するために投稿データを全て取得する
-    public static function postLists()
+    public static function postLists($category_id)
     {
-        return self::postQuery()->get();
+        $post_lists = self::postQuery();
+
+        //サブカテゴリーを選択した時の処理（検索）
+        if($category_id){
+            $post_lists = $post_lists->where('post_sub_category_id', $category_id);
+        }
+        return $post_lists -> get();
     }
-
-
-
     // ---------------------------------------------------
 
     //投稿の更新処理

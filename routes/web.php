@@ -64,7 +64,7 @@ Route::group(['middleware' => ['auth']], function(){
         Route::namespace('User')->group(function(){
             Route::namespace('Post')->group(function(){
 
-                //掲示板一覧ページ表示
+                //掲示板一覧ページ表示(?をつけることで、subcategoryのidがなくても許容される。サブカテでの投稿検索でこれは必要)
                 Route::get('/post/index/{category?}', 'PostsController@index')->name('post.index');
 
                 //掲示板投稿処理、編集画面表示、編集処理、削除処理

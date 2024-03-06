@@ -83,9 +83,27 @@
       @endcan
       {{-- @if(Auth::user()->admin_role == 1)
       @endif でもOK --}}
+
       <a class="create_margin" href="{{ route('post.create') }}">
         <button type="submit" class="button_category_blue">投稿</button>
       </a>
+
+      <p>
+        <lavel>カテゴリー</lavel>
+        <select name="post_sub_category_id" id="post_sub_category_change">
+          <option value="">----</option>
+          @foreach($post_main_categories as $post_main_category)
+          <optgroup label="{{ $post_main_category -> main_category }}">
+            @foreach($post_main_category->postSubCategories as $postSubCategory)
+            <option value="{{ $postSubCategory->id }}" data-category_id="{{ $postSubCategory->id }}">
+              {{ $postSubCategory -> sub_category }}
+            </option>
+            @endforeach
+          </optgroup>
+          @endforeach
+        </select>
+      </p>
+      
     </section>
   </div>
 </div>
