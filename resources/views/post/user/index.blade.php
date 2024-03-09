@@ -88,6 +88,20 @@
         <button type="submit" class="button_category_blue">投稿</button>
       </a>
 
+      <div class="create_margin">
+        <form action="{{ route('post.index') }}" method="get">
+          <input type="text" name="keyword">
+          <button type="submit">キーワード検索</button>
+        </form>
+      </div>
+
+
+      <div class="create_margin">
+       <form action="{{ route('post.index') }}" method="get">
+         <button type="submit" name="post_favorite" value="post_favorite" class="button_like">いいねした投稿</button>
+       </form>
+      </div>
+
       <p>
         <lavel>カテゴリー</lavel>
         <select name="post_sub_category_id" id="post_sub_category_change">
@@ -103,7 +117,6 @@
           @endforeach
         </select>
       </p>
-      
     </section>
   </div>
 </div>

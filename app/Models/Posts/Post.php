@@ -72,7 +72,7 @@ class Post extends Model
     //クエリ作成（N＋1対策）
     public static function postQuery()
     {
-        return self::with([
+        return self::with([//全投稿取得、リレーション先も取得する
             //リレーション名を書く。
             'user',
             'userPostFavoriteRelations',
@@ -89,16 +89,30 @@ class Post extends Model
         return self::postQuery()->findOrFail($id);
     }
     // ---------------------------------------------------
-    //投稿一覧を表示するために投稿データを全て取得する
-    public static function postLists($category_id)
+    //投稿一覧を表示
+    public static function postLists($request, $category_id)
     {
-        $post_lists = self::postQuery();
+        $keyword = $request->keyword;
+    
+        $post_lists = self::postQuery();//全投稿取得、リレーション先も取得する
 
-        //サブカテゴリーを選択した時の処理（検索）
+        //カテゴリーを選択した時の処理（サブカテゴリーから検索）
         if($category_id){
             $post_lists = $post_lists->where('post_sub_category_id', $category_id);
         }
-        return $post_lists -> get();
+
+        //キーワード検索処理★
+        if($keyword){//もし、キーワードがあったら、
+            $post_lists = $post_lists
+            ->where('title', 'like', '%' . $keyword . '%')//タイトルにキーワードが入っているか
+            ->orWhere('post', 'like', '%' . $keyword . '%')//または投稿にキーワードが入っているか
+            ->orWhereIn('post_sub_category_id', function ($query) use($keyword){
+                $query->from('post_sub_categories')//サブカテゴリーテーブルを使用
+                ->select('id')//選択するサブカテゴリーid
+                ->where('sub_category', $keyword);
+            });//投稿テーブルの「投稿サブカテゴリーid」が、、サブカテゴリーテーブルのキーワードと一致するサブカテゴリー名の、サブカテゴリーidを比べて同じだったら、（そのカテゴリーがあったら）みたいなかんじ。（orwhereInは、リレーション先の他のテーブルも使う時に使う。）
+        }
+    return $post_lists->get();
     }
     // ---------------------------------------------------
 

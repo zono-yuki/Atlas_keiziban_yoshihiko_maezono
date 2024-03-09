@@ -68,7 +68,7 @@ li {
 .button_category {
     padding: 10px 20px;
     background: #cc4125;
-    width: 70%;
+    width: 100%;
     color: #fff;
     text-align: center;
     margin: 0 auto;
@@ -86,7 +86,7 @@ li {
 .button_category_blue {
     padding: 10px 20px;
     background: #4169e1;
-    width: 50%;
+    width: 100%;
     color: #fff;
     text-align: center;
     margin: 0 auto;
@@ -95,6 +95,26 @@ li {
 }
 
 .button_category_blue:hover {
+    background-color: #666;
+    opacity: 0.7;
+    color: #fff;
+    font-weight: bold;
+}
+
+.button_like {
+    padding: 10px 20px;
+    background: #f4b400;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 8px;
+    transition: 0.3s;
+    border:1px solid #fff;
+    font-weight: bold;
+}
+
+.button_like:hover {
     background-color: #666;
     opacity: 0.7;
     color: #fff;
