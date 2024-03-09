@@ -93,15 +93,16 @@ class Post extends Model
     public static function postLists($request, $category_id)
     {
         $keyword = $request->keyword;
-    
-        $post_lists = self::postQuery();//全投稿取得、リレーション先も取得する
+        $post_lists = self::postQuery();//全投稿&リレーション先を取得する
+        $post_favorite = $request->post_favorite;
+        $post_mine = $request->post_mine;
 
         //カテゴリーを選択した時の処理（サブカテゴリーから検索）
         if($category_id){
             $post_lists = $post_lists->where('post_sub_category_id', $category_id);
         }
 
-        //キーワード検索処理★
+        //キーワード検索した時の処理
         if($keyword){//もし、キーワードがあったら、
             $post_lists = $post_lists
             ->where('title', 'like', '%' . $keyword . '%')//タイトルにキーワードが入っているか
@@ -112,8 +113,25 @@ class Post extends Model
                 ->where('sub_category', $keyword);
             });//投稿テーブルの「投稿サブカテゴリーid」が、、サブカテゴリーテーブルのキーワードと一致するサブカテゴリー名の、サブカテゴリーidを比べて同じだったら、（そのカテゴリーがあったら）みたいなかんじ。（orwhereInは、リレーション先の他のテーブルも使う時に使う。）
         }
+
+        //いいねした投稿一覧を押した時の処理
+        if($post_favorite){
+            $post_lists = $post_lists
+            ->orWhereIn('id', function($query){
+                $query->from('post_favorites')
+                    ->select('post_id')
+                    ->where('user_id', Auth::id());
+            });//リレーション先の中間テーブルから引用してくる
+        }
+
+        //自分の投稿を検索する処理
+        if($post_mine){
+            $post_mine = $post_lists->where('user_id', Auth::id());
+        }
+
     return $post_lists->get();
     }
+
     // ---------------------------------------------------
 
     //投稿の更新処理

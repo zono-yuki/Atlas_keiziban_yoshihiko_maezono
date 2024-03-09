@@ -74,6 +74,7 @@ li {
     margin: 0 auto;
     border-radius: 8px;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .button_category:hover {
@@ -92,6 +93,7 @@ li {
     margin: 0 auto;
     border-radius: 8px;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .button_category_blue:hover {
@@ -121,6 +123,25 @@ li {
     font-weight: bold;
 }
 
+.button_mine {
+    padding: 10px 20px;
+    background: greenyellow;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 8px;
+    transition: 0.3s;
+    border:1px solid #fff;
+    font-weight: bold;
+}
+
+.button_mine:hover {
+    background-color: #666;
+    opacity: 0.7;
+    color: #fff;
+    font-weight: bold;
+}
 .create_margin {
     display: block;
     margin-bottom: 20px;
@@ -151,6 +172,9 @@ li {
     justify-content: space-between;
 }
 
+.posts_user_name{
+    width: 300px;
+}
 .posts_category {
     min-width: 250px;
 }

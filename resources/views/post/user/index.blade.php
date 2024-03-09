@@ -31,7 +31,7 @@
       <div class="post_block">
         <ul class="posts_padding">
           <li class="posts_flex mb-2">
-            <p>{{ $post_list->user->username }}さん</p>
+            <p class="posts_user_name">{{ $post_list->user->username }}さん</p>
             <p>{{ date("Y年m月d日 H:i",strtotime($post_list->event_at)) }}</p>
             <div class="view_flex">
               <p>{{ $post_list -> actionLogs -> count() }}</p>
@@ -77,6 +77,8 @@
 
     <!-- カテゴリー（右半分） -->
     <section class="right_index">
+
+      <!-- 管理者のみカテゴリー作成画面へ遷移できる -->
       @can('admin')
       <a class="create_margin" href="{{ route('post_category.index') }}">
         <button type="submit" class="button_category">カテゴリーを追加</button></a>
@@ -84,24 +86,34 @@
       {{-- @if(Auth::user()->admin_role == 1)
       @endif でもOK --}}
 
+      <!-- 投稿ボタン -->
       <a class="create_margin" href="{{ route('post.create') }}">
         <button type="submit" class="button_category_blue">投稿</button>
       </a>
 
+      <!-- キーワード検索 -->
       <div class="create_margin">
         <form action="{{ route('post.index') }}" method="get">
           <input type="text" name="keyword">
-          <button type="submit">キーワード検索</button>
+          <button type="submit" class="keyword_button mt-3">キーワード検索</button>
         </form>
       </div>
 
-
+      <!-- いいねした投稿を検索 -->
       <div class="create_margin">
        <form action="{{ route('post.index') }}" method="get">
          <button type="submit" name="post_favorite" value="post_favorite" class="button_like">いいねした投稿</button>
        </form>
       </div>
 
+      <!-- 自分の投稿を検索 -->
+      <div class="create_margin">
+       <form action="{{ route('post.index') }}" method="get">
+         <button type="submit" name="post_mine" value="post_mine" class="button_mine">自分の投稿</button>
+       </form>
+      </div>
+
+      <!-- サブカテゴリーから検索 -->
       <p>
         <lavel>カテゴリー</lavel>
         <select name="post_sub_category_id" id="post_sub_category_change">
