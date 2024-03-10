@@ -45,7 +45,6 @@ Route::group(['middleware' => ['auth']], function(){
 
                 // 新規サブカテゴリー登録処理、サブカテゴリー削除処理  ※ブレードでは、{{ route('post_sub_category.store') }}のようにする
                 Route::resource('post_sub_category', 'PostSubCategoriesController', ['only' => ['store', 'destroy']]);
-
             });
         });
     });

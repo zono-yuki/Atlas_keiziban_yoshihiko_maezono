@@ -10,8 +10,8 @@
         <p class="thank_you_add mt-0">メインカテゴリー登録完了!</p>
       </div>
       <!-- 戻るボタン -->
-     <div class="text-center mt-5">
-       <a href="{{ route('post_category.index') }}"><button type="submit" class="button">戻る</button></a>
+     <div class="text-center mt-5 pb-5">
+       <a href="{{ route('post_category.index') }}"><button type="submit" class="button">OK!!</button></a>
      </div>
     </div>
   </div>

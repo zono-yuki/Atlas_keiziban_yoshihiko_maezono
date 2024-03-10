@@ -13,7 +13,7 @@
       <p class="thank_you">投稿編集画面</p>
     </div>
     <div class="flex_name_logout text-right mr-4 mb-3">
-      <p class="thank_you mr-5"> {{ Auth::user() -> username }} さん</p>
+      <p class="thank_you mr-5"> <span class="login_name_color">{{ Auth::user() -> username }}</span>  <span class="login_name_san">さん</span></p>
       <a class="logout_color" href="{{ route('logout') }}"> <button type="submit" class="mt-4 button">ログアウト</button>
       </a>
     </div>
@@ -101,7 +101,7 @@
 
 
    <!-- 戻るボタン -->
-   <div class="return">
+   <div class="return pb-5">
        <a href="{{ route('post.show', [$post_detail->id]) }}"><button type="submit" class="button">戻る</button></a>
    </div>
   </div>

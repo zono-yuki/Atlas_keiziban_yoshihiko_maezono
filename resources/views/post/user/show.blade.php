@@ -13,7 +13,7 @@
       <p class="thank_you">掲示板詳細</p>
     </div>
     <div class="flex_name_logout text-right mr-4 mb-3">
-      <p class="thank_you mr-5"> {{ Auth::user() -> username }} さん</p>
+      <p class="thank_you mr-5"> <span class="login_name_color">{{ Auth::user() -> username }}</span>  <span class="login_name_san">さん</span></p>
       <a class="logout_color" href="{{ route('logout') }}"> <button type="submit" class="mt-4 button">ログアウト</button>
       </a>
     </div>
@@ -126,6 +126,11 @@
     <form action="{{ route('post_comment.store',[$post_detail->id]) }}" method="post">
       @csrf
       <div class="">
+        @if ($errors->has('comment'))
+        @foreach($errors->get('comment') as $message)
+        <p class="error-message"> {{ $message }} </p>
+        @endforeach
+        @endif
         <textarea type="text" name="comment" class="post_comment_text" cols="50" rows="5" placeholder="こちらからコメントできます♫
         "></textarea>
       </div>

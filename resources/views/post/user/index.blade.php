@@ -13,7 +13,7 @@
       <p class="thank_you">掲示板投稿一覧</p>
     </div>
     <div class="flex_name_logout text-right mr-4 mb-3">
-      <p class="thank_you mr-5"> {{ $user_name }} さん</p>
+      <p class="thank_you mr-5"> <span class="login_name_color">{{ Auth::user() -> username }}</span>  <span class="login_name_san">さん</span></p>
       <a class="logout_color" href="{{ route('logout') }}"> <button type="submit" class="mt-4 button">ログアウト</button></a>
     </div>
   </div>

@@ -10,11 +10,13 @@ use App\Models\Posts\PostCommentFavorite;
 use App\Models\Users\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CommentUpdateFormRequest;
+use App\Http\Requests\CommentFormRequest;
+
 
 class PostCommentsController extends Controller
 {
     // コメント投稿処理
-    public function store(Request $request, $id)
+    public function store(CommentFormRequest $request, $id)
     {
         // dd($id);投稿idが飛んでくる。
 

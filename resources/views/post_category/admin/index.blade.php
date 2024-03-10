@@ -141,7 +141,7 @@
   </div>
 
   <!-- 戻るボタン -->
-  <div class="text-center mt-5">
+  <div class="text-center mt-5 pb-5">
     <a href="{{ route('post.index') }}"><button type="submit" class="button">戻る</button></a>
   </div>
 
