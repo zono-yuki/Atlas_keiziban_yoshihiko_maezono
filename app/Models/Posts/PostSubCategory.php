@@ -33,6 +33,6 @@ class PostSubCategory extends Model
         if($post_sub_category -> postIsExistence($post_sub_category)){
             $post_sub_category -> delete();
         }
-        return \App::abort(404);
+        // return \App::abort(404);
     }
 }
