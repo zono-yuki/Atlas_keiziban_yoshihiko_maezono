@@ -15,12 +15,13 @@ use App\Http\Requests\PostUpdateFormRequest;
 class PostsController extends Controller
 {
     // 掲示板一覧ページを表示する nullなぜつける？外すとエラーになるけど、なんで、、わかった。$categor_idがないときでもいいように。
-    public function index(Request $request,$category_id = null)
+    public function index(Request $request,$category_id = null,$post_sub_category_id =null,)
     {
-        // dd($request);
+        $login_user_name = Auth::user()->username;
         return view('post.user.index', [
-            'post_lists' => Post::postLists($request, $category_id),
+            'post_lists' => Post::postLists($request, $category_id, $post_sub_category_id),
             'post_main_categories' => PostMainCategory::postMainCategoryLists(),
+            'user_name' => $login_user_name,
         ]);
     }
 

@@ -12,10 +12,11 @@
     <div class="mb-2 ml-5">
       <p class="thank_you">新規投稿画面</p>
     </div>
-    <div class="text-right mr-4 mb-3">
-      <a class="logout_color" href="{{ route('logout') }}"> <button type="submit" class="mt-4 button">ログアウト</button></a>
+    <div class="flex_name_logout text-right mr-4 mb-3">
+      <p class="thank_you mr-5"> {{ Auth::user() -> username }} さん</p>
+      <a class="logout_color" href="{{ route('logout') }}"> <button type="submit" class="mt-4 button">ログアウト</button>
+      </a>
     </div>
-  </div>
 </header>
 
 <div class="inner">
@@ -76,7 +77,7 @@
       <div class="post_button">
         <button type="submit" class="button_post_create">投稿</button>
       </div>
-      
+
     </form>
 
 

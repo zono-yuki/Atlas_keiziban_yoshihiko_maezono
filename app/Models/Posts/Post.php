@@ -90,12 +90,14 @@ class Post extends Model
     }
     // ---------------------------------------------------
     //投稿一覧を表示
-    public static function postLists($request, $category_id)
+    public static function postLists($request, $category_id, $post_sub_category_id)
     {
         $keyword = $request->keyword;
         $post_lists = self::postQuery();//全投稿&リレーション先を取得する
         $post_favorite = $request->post_favorite;
         $post_mine = $request->post_mine;
+        $post_sub_category_id = $request->post_sub_category_id;
+        // dd($post_sub_category_id);ok
 
         //カテゴリーを選択した時の処理（サブカテゴリーから検索）
         if($category_id){
@@ -127,6 +129,10 @@ class Post extends Model
         //自分の投稿を検索する処理
         if($post_mine){
             $post_mine = $post_lists->where('user_id', Auth::id());
+        }
+
+        if($post_sub_category_id){
+            $post_lists = Post::where('post_sub_category_id', $post_sub_category_id);
         }
 
     return $post_lists->get();

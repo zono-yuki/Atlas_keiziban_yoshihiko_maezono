@@ -12,7 +12,8 @@
     <div class="mb-2 ml-5">
       <p class="thank_you">掲示板投稿一覧</p>
     </div>
-    <div class="text-right mr-4 mb-3">
+    <div class="flex_name_logout text-right mr-4 mb-3">
+      <p class="thank_you mr-5"> {{ $user_name }} さん</p>
       <a class="logout_color" href="{{ route('logout') }}"> <button type="submit" class="mt-4 button">ログアウト</button></a>
     </div>
   </div>
@@ -114,21 +115,28 @@
       </div>
 
       <!-- サブカテゴリーから検索 -->
-      <p>
-        <lavel>カテゴリー</lavel>
-        <select name="post_sub_category_id" id="post_sub_category_change">
-          <option value="">----</option>
-          @foreach($post_main_categories as $post_main_category)
-          <optgroup label="{{ $post_main_category -> main_category }}">
-            @foreach($post_main_category->postSubCategories as $postSubCategory)
-            <option value="{{ $postSubCategory->id }}" data-category_id="{{ $postSubCategory->id }}">
-              {{ $postSubCategory -> sub_category }}
-            </option>
+
+      <p class="posts_category_name">サブカテゴリーから検索</p>
+
+      <ul class="pl-3">
+        @foreach($post_main_categories as $post_main_category)
+        <li class="main_category_font">
+          <div class="flex-main_category">
+            <div>
+              {{ $post_main_category -> main_category}}
+            </div>
+          </div>
+          <ul class="pl-3 mt-2">
+            @foreach($post_main_category -> postSubCategories as $post_sub_category)
+            <form action="{{ route('post.index') }}" method="get">
+            <button type="submit" name="post_sub_category_id" value="{{ $post_sub_category->id }}" class="button_sub_category_index">{{ $post_sub_category -> sub_category }}</button>
+            </form>
             @endforeach
-          </optgroup>
-          @endforeach
-        </select>
-      </p>
+          </ul>
+        </li>
+        <hr>
+        @endforeach
+      </ul>
     </section>
   </div>
 </div>
