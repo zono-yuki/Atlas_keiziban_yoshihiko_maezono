@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="original-gradient_add">
-    <div class="add_back">
+    <div class="center__center">
       <div class="flex_thank_you">
         <p class="thank_you_add mt-0">メインカテゴリー登録完了!</p>
       </div>
@@ -14,7 +14,6 @@
        <a href="{{ route('post_category.index') }}"><button type="submit" class="button">OK!!</button></a>
      </div>
     </div>
-  </div>
 </div>
 
 @endsection
