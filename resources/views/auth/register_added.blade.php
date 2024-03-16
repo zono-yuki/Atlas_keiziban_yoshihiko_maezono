@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="original-gradient">
-  <div class="flex-person">
+  <div class="center__center">
     <div class="center-center">
 
       <div class="flex_thank_you_2">
