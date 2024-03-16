@@ -102,7 +102,7 @@
 
    <!-- 戻るボタン -->
    <div class="return pb-5">
-       <a href="{{ route('post.show', [$post_detail->id]) }}"><button type="submit" class="button">戻る</button></a>
+       <a href="{{ route('post.show', [$post_detail->id]) }}"><button type="submit" class="button_comment">戻る</button></a>
    </div>
   </div>
 </div>

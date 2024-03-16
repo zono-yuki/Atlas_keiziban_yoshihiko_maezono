@@ -70,7 +70,7 @@
                 <i class="fas fa-heart"></i>
               </a>
               @endif
-              <span class="ml-2"id="post_favorite_count{{ $post_detail->id }}">
+              <span class="ml-2 " style="color:#FF0000" id="post_favorite_count{{ $post_detail->id }}">
                 {{ $post_detail->userPostFavoriteRelations->count() }}
               </span>
             </p>
@@ -100,7 +100,7 @@
       <div class="comment_show_sum">
         <p class="comment_show">{{ $post_comment -> comment }}</p>
         <p class="comment_sum text-danger">
-          <!-- コメントいいね機能作成中 -->
+          <!-- コメントいいね機能-->
               @if($post_comment->commentFavoriteIsExistence($post_comment))
               <a class="post_comment_favorite_key" post_comment_id="{{ $post_comment->id }}" post_comment_favorite_id="0" style="color:#FF0000; text-decoration: none;">
                 <i class="far fa-heart"></i>
@@ -135,14 +135,14 @@
         "></textarea>
       </div>
       <div class="text-right">
-        <button type="submit" class="button_comment">Comment</button>
+        <button type="submit" class="button_comment">コメント</button>
       </div>
     </form>
 
 
     <!-- 戻るボタン -->
-    <div class="text-center mt-5 mb-5">
-      <a href="{{ route('post.index') }}"><button type="submit" class="button">戻る</button></a>
+    <div class="text-center padding_bottom">
+      <a href="{{ route('post.index') }}"><button type="submit" class="button_comment">戻る</button></a>
     </div>
   </div>
 </div>

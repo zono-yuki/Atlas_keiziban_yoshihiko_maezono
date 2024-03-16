@@ -29,7 +29,7 @@
       <form action="{{ route('main_store') }}" method="post" class="category_new_form">
         @csrf
         <div class="">
-          <p class="thank_you">新規メインカテゴリー</p>
+          <p class="thank_you_admin">新規メインカテゴリー</p>
         </div>
 
         <!-- メインカテゴリーのエラーメッセージを表示する -->
@@ -92,7 +92,7 @@
     <!-- カテゴリー一覧 -->
     <section class="category_right_index">
       <div class="">
-        <p class="thank_you">カテゴリー一覧</p>
+        <p class="thank_you_admin">カテゴリー一覧</p>
       </div>
 
       <ul class="pl-3">
@@ -141,7 +141,7 @@
   </div>
 
   <!-- 戻るボタン -->
-  <div class="text-center mt-5 pb-5">
+  <div class="text-center mt-5 padding_bottom">
     <a href="{{ route('post.index') }}"><button type="submit" class="button">戻る</button></a>
   </div>
 

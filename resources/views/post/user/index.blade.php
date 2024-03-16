@@ -48,8 +48,8 @@
           <li class="posts_flex">
             <p class="posts_category">{{ $post_list->postSubCategory->sub_category }}</p>
             <div class="posts_comment_flex">
-              <p class="">コメント数</p>
-              <p class="">{{ $post_list->postComments->count() }}</p>
+              <p class="comment_color">コメント数</p>
+              <p class="comment_color">{{ $post_list->postComments->count() }}</p>
             </div>
             <div class="posts_like_flex">
               <p class="text-danger">
@@ -67,7 +67,7 @@
               </span>
               </p>
             </div>
-            <p class="posts_detail_go"><a href="{{ route('post.show' ,[$post_list->id]) }}">詳細ページへ</a></p>
+            <p class="posts_detail_go"><a class="detail_go" href="{{ route('post.show' ,[$post_list->id]) }}">詳細ページへ</a></p>
 
           </li>
 
@@ -95,8 +95,10 @@
       <!-- キーワード検索 -->
       <div class="create_margin">
         <form action="{{ route('post.index') }}" method="get">
-          <input type="text" name="keyword">
-          <button type="submit" class="keyword_button mt-3">キーワード検索</button>
+          <div class="text_keyword_flex">
+            <input type="text" name="keyword" class="text-keyword">
+            <button type="submit" class="keyword_button">キーワード検索</button>
+          </div>
         </form>
       </div>
 
