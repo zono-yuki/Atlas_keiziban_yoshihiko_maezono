@@ -84,20 +84,28 @@
 
    </form>
 
-   <!-- 削除フォーム (投稿に対するコメントがある状態だと、投稿は削除できない)-->
+   <!-- 削除フォーム-->
 
-   @if($post_detail->postCommentIsExistence($post_detail))
-   <form action="{{ route('post.destroy',[$post_detail->id]) }}" method="post">
+      <!-- 投稿者か、管理者のみ表示。 -->
+      @if(Auth::user()->contributorAndAdmin($post_detail->user_id))
+        <div class="post_button">
+          <button type="button" class="button_post_destroy cancelModal" post_created_at = "{{ $post_detail->created_at }}" post_title="{{ $post_detail->title }}" post_body="{{ $post_detail->post }}" post_id = "{{ $post_detail->id }}">削除</button>
+        </div>
+      @endif
+
+   {{--
+      @if($post_detail->postCommentIsExistence($post_detail))
+      <form action="{{ route('post.destroy',[$post_detail->id]) }}" method="post">
       @method('DELETE')
       @csrf
       <!-- 投稿者か、管理者のみ表示。 -->
       @if(Auth::user()->contributorAndAdmin($post_detail->user_id))
         <div class="post_button">
-          <button type="submit" class="button_post_create">削除</button>
+          <button type="submit" class="button_post_destroy">削除</button>
         </div>
       @endif
-   </form>
-   @endif
+      </form>
+   @endif--}}
 
 
    <!-- 戻るボタン -->
@@ -105,7 +113,94 @@
        <a href="{{ route('post.show', [$post_detail->id]) }}"><button type="submit" class="button_comment">戻る</button></a>
    </div>
   </div>
+ </div>
+
+
+ <!-- 隠しモーダル -->
+  <div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+      <div class="w-100 m-auto">
+
+      <form action="{{ route('post.destroy',[$post_detail->id]) }}" method="post">
+        @method('DELETE')
+        @csrf
+        <!-- 投稿作成日時  -->
+        <div class="m-auto">
+           <div class="modal-inner-created_at w-100 text-center">
+             <span type="text" class="w-100" name="post_created_at" value=""><span>
+           </div>
+        </div>
+
+
+        <!-- タイトル  -->
+        <div class="m-auto">
+           <div class="modal-inner-title w-100 text-center">
+             <span type="text" class="w-100" name="post_title" value=""><span>
+           </div>
+        </div>
+
+
+        <!-- 投稿内容 -->
+        <div class="m-auto">
+           <div class="modal-inner-body w-100 text-center">
+            <span type="text" class="w-100" name="post_body" value=""></span>
+           </div>
+        </div>
+
+
+        <div class="mt-3">
+          <div class="w-60 m-auto d-flex">
+            <!-- 閉じるボタン -->
+            <a class="js-modal-close button_modal_close" href="" >閉じる</a>
+            <!-- 投稿のidを受け取る -->
+            <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
+            <!-- 削除ボタン -->
+            <input type="submit" class="button_modal_delete" value="削除">
+          </div>
+        </div>
+      </form>
+
+
+      </div>
+  </div>
 </div>
+
+{{--<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+
+    <!-- 投稿を編集する処理へ飛ばす -->
+    <form action="{{ route('post.edit') }}" method="post">
+      <div class="w-100">
+
+        <!-- タイトル  -->
+        <div class="modal-inner-title w-50 m-auto">
+          <span type="text" name="post_title" value="" class="w-100"><span>
+        </div>
+
+        <!-- 投稿内容 -->
+        <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
+          <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
+        </div>
+
+        <div class="w-50 m-auto edit-modal-btn d-flex">
+
+          <!-- 閉じるボタン -->
+          <a class="js-modal-close btn btn-danger btn-lg d-block" href="">閉じる</a>
+
+          <!-- 投稿のidを受け取る -->
+          <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
+
+          <!-- 編集ボタン -->
+          <input type="submit" class="btn btn-primary btn-lg d-block" value="編集">
+        </div>
+      </div>
+      {{ csrf_field() }}
+    </form>
+  </div>
+</div>--}}
+
 
 
 

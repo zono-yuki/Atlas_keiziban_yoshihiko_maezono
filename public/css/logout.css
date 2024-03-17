@@ -33,6 +33,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
+
 /* ヘッダー */
 .inner {
     /* max-width: 1000px;
@@ -54,6 +55,7 @@ body {
     font-size: 20px;
     list-style: none;
 }
+
 /* ログイン画面 ーーーーーーーーーーーーー*/
 .top-margin_login {
     padding-top: 20%;

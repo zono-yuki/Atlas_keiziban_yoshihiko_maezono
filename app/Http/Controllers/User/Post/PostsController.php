@@ -100,7 +100,7 @@ class PostsController extends Controller
     }
 
     //投稿削除処理（投稿者、管理者のみ）
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
         Post::postDestroy($id);
         return redirect()->route('post.index');

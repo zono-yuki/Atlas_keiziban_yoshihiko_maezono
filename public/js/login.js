@@ -86,4 +86,47 @@ $(function () {
     var url = '/post/index/' + category_id;
     window.location = url;
   });
+
+//投稿削除モーダル作成中
+
+  // 投稿の編集モーダルを表示する処理 & 渡された変数をモーダルに表示する処理
+  $('.cancelModal').on('click', function () {
+
+    $('.js-modal').fadeIn();//編集モーダルを表示させる。
+
+    //属性と値(タイトル)を変数に入れる処理
+    var post_created_at = $(this).attr('post_created_at');
+
+    //属性と値(タイトル)を変数に入れる処理
+    var post_title = $(this).attr('post_title');
+
+    //属性と値(投稿内容)を変数に入れる処理
+    var post_body = $(this).attr('post_body');
+
+    //属性と値(投稿id)を変数に入れる処理
+    var post_id = $(this).attr('post_id');
+
+
+    //モーダルのタイトル部分に既存のタイトルを入れる処理
+    $('.modal-inner-created_at span').text(post_created_at);
+
+    //モーダルのタイトル部分に既存のタイトルを入れる処理
+    $('.modal-inner-title span').text(post_title);
+
+    //モーダルの投稿部分に既存の投稿内容を入れる処理
+    $('.modal-inner-body span').text(post_body);
+
+    //投稿idをhiddenのvalueに入れる処理
+    $('.edit-modal-hidden').val(post_id);
+
+    return false;
+
+  });
+
+
+  $('.js-modal-close').on('click', function () {
+    $('.js-modal').fadeOut();//モーダルを閉じる
+    return false;
+  });
+
 });
