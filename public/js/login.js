@@ -87,7 +87,7 @@ $(function () {
     window.location = url;
   });
 
-//投稿削除モーダル作成中
+//投稿削除モーダル
 
   // 投稿の編集モーダルを表示する処理 & 渡された変数をモーダルに表示する処理
   $('.cancelModal').on('click', function () {
@@ -117,6 +117,41 @@ $(function () {
     $('.modal-inner-body span').text(post_body);
 
     //投稿idをhiddenのvalueに入れる処理
+    $('.edit-modal-hidden').val(post_id);
+
+    return false;
+
+  });
+
+
+  $('.js-modal-close').on('click', function () {
+    $('.js-modal').fadeOut();//モーダルを閉じる
+    return false;
+  });
+
+  //コメント削除モーダル作成中
+
+  // 投稿の編集モーダルを表示する処理 & 渡された変数をモーダルに表示する処理
+  $('.cancelModal').on('click', function () {
+
+    $('.js-modal').fadeIn();//編集モーダルを表示させる。
+
+    //属性と値(コメント作成日時)を変数に入れる処理
+    var comment_created_at = $(this).attr('comment_created_at');
+
+    //属性と値(コメント)を変数に入れる処理
+    var comment = $(this).attr('comment');
+
+    //属性と値(コメントID)を変数に入れる処理
+    var comment_id = $(this).attr('comment_id');
+
+    //モーダルにコメント作成日時埋め込む処理
+    $('.modal-inner-created_at span').text(comment_created_at);
+
+    //モーダルにコメントを埋め込む処理
+    $('.modal-inner-comment span').text(comment);
+
+    //投稿idをhiddenのvalueに入れる処理（コントローラーに送るために、hiddenで送る）
     $('.edit-modal-hidden').val(post_id);
 
     return false;

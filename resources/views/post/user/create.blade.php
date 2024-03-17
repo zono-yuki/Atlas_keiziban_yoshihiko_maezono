@@ -83,7 +83,7 @@
 
     <!-- 戻るボタン -->
     <div class="return padding_bottom">
-      <a href="{{ route('post.index') }}"><button type="submit" class="button">戻る</button></a>
+      <a href="{{ route('post.index') }}"><button type="submit" class="button_return">戻る</button></a>
     </div>
   </div>
 

@@ -203,6 +203,26 @@ a:hover{
     width: 25%;
     text-align: left;
 }
+
+.button_return {
+    padding: 15px 20px;
+    background: #03A9F4;
+    width: 170px;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 8px;
+    transition: 0.3s;
+    font-weight: bold;
+    border: none;
+}
+
+.button_return:hover {
+    background-color: #666;
+    opacity: 0.7;
+    color: #fff;
+    font-weight: bold;
+}
 .button_category {
     padding: 10px 20px;
     background: #006064;
@@ -514,7 +534,7 @@ a:hover{
 .button_category_delete {
     font-size: 13px;
     padding: 3px 8px;
-    background: #03A9F4;
+    background: #006064;
     width: 70px;
     color: #fff;
     text-align: center;
@@ -563,6 +583,14 @@ a:hover{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.comment_dan{
+    width: 470px;
+}
+
+.comment_delete_name{
+    display: inline-block;
 }
 
 /* 新規投稿画面 */
