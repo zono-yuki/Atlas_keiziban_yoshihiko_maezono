@@ -164,4 +164,25 @@ $(function () {
     return false;
   });
 
+
+
+  // サブカテゴリーアコーディオンメニュー個別展開
+
+  const accordions = document.getElementsByClassName("accordion");//まず、accordionから複数の要素を取り出してaccordionsに収める。
+
+  for (let i = 0; i < accordions.length; i++) {//取り出したaccordionの数だけイベントリスナーを付与していく。
+    accordions[i].addEventListener("mouseover", function () {//accordion[0]〜最大数までそれぞれをホバーした時
+      this.classList.toggle("active");//それぞれのリストにactiveクラスをつける。
+      const panel = this.nextElementSibling;// panelをaccordionの妹クラスと設定する。
+      if (panel.style.maxHeight) {//もしmax-heightが指定していたらmax-heightをnullにする。
+        panel.style.maxHeight = null;
+      } else {//そうでなければ、max-heightを指定する。scrollHeightは隠れている部分も含めた高さのこと。
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  }
+
+
+
+
 });

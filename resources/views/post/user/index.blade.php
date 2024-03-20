@@ -118,17 +118,18 @@
 
       <!-- サブカテゴリーから検索 -->
 
-      <p class="posts_category_name">サブカテゴリーから検索</p>
+      <p class="posts_category_name mb-3">サブカテゴリーから検索</p>
 
       <ul class="pl-3">
         @foreach($post_main_categories as $post_main_category)
         <li class="main_category_font">
-          <div class="flex-main_category">
-            <div>
-              {{ $post_main_category -> main_category}}
-            </div>
+          <div class="accordion">
+            <!-- メインカテゴリを表示 -->
+            <div>{{ $post_main_category -> main_category}}</div>
+            <!-- 下矢印 -->
+            <div class="arrow-bottom"></div>
           </div>
-          <ul class="pl-3 mt-2">
+          <ul class="panel pl-3 mt-2">
             @foreach($post_main_category -> postSubCategories as $post_sub_category)
             <form action="{{ route('post.index') }}" method="get">
             <button type="submit" name="post_sub_category_id" value="{{ $post_sub_category->id }}" class="button_sub_category_index">{{ $post_sub_category -> sub_category }}</button>
