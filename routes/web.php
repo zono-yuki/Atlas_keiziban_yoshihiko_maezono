@@ -20,7 +20,7 @@ Route::group(['middleware' => ['guest']], function (){
     });
 });
 
-
+///////
 //ログイン中のページ
 Route::group(['middleware' => ['auth']], function(){
     //管理者専用の処理
